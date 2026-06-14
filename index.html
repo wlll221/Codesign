@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CODESIGN.WY</title>
+    <meta
+      id="meta-description"
+      name="description"
+      content="CODESIGN.WY personal portfolio blending product thinking, AI workflows, and digital craft."
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18.3.1",
+          "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+          "react-dom": "https://esm.sh/react-dom@18.3.1",
+          "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+          "htm": "https://esm.sh/htm@3.1.1",
+          "three": "https://esm.sh/three@0.169.0",
+          "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.17.10?external=react,react-dom,react-dom/client,react/jsx-runtime,three",
+          "@react-three/drei": "https://esm.sh/@react-three/drei@9.121.4?external=react,react-dom,react-dom/client,react/jsx-runtime,three,@react-three/fiber",
+          "@react-three/rapier": "https://esm.sh/@react-three/rapier@1.5.0?external=react,react-dom,react-dom/client,react/jsx-runtime,three,@react-three/fiber",
+          "meshline": "https://esm.sh/meshline@3.3.1?external=three"
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chonburi&family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18.3.1",
+          "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+          "react/jsx-dev-runtime": "https://esm.sh/react@18.3.1/jsx-dev-runtime",
+          "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?external=react",
+          "three": "https://esm.sh/three@0.169.0",
+          "@react-three/fiber": "https://esm.sh/@react-three/fiber@8.17.10?external=react,react-dom,three",
+          "@react-three/drei": "https://esm.sh/@react-three/drei@9.121.4?external=react,react-dom,three,@react-three/fiber",
+          "@react-three/rapier": "https://esm.sh/@react-three/rapier@1.5.0?external=react,react-dom,three,@react-three/fiber",
+          "meshline": "https://esm.sh/meshline@3.3.1?external=three",
+          "htm": "https://esm.sh/htm@3.1.1?external=react"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="CODESIGN.WY home">
+          <span class="brand-en">CODESIGN.WY</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#home" data-view-link="home" data-i18n="nav_home">Home</a>
+          <a href="#projects" data-view-link="projects" data-i18n="nav_projects">Projects</a>
+          <a href="#ai-library" data-view-link="ai-library" data-i18n="nav_ai_library">AI Library</a>
+          <a href="#experience" data-view-link="experience" data-i18n="nav_experience">Experience</a>
+        </nav>
+        <div class="toolbar-actions">
+          <button class="toolbar-chip toolbar-button" type="button">DARK</button>
+          <button
+            class="toolbar-chip toolbar-button"
+            id="lang-toggle"
+            type="button"
+            aria-label="Switch language"
+          >
+            EN
+          </button>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="view view-home" id="view-home" data-view="home">
+          <section class="hero hero-water-minimal" id="home">
+            <div class="hero-water-surface hero-aurora-surface" aria-hidden="true"></div>
+            <div class="hero-minimal-glow hero-minimal-glow-one" aria-hidden="true"></div>
+            <div class="hero-minimal-glow hero-minimal-glow-two" aria-hidden="true"></div>
+            <div class="hero-minimal-glow hero-minimal-glow-three" aria-hidden="true"></div>
+            <div class="hero-minimal-glow hero-minimal-glow-four" aria-hidden="true"></div>
+            <div class="hero-minimal-vignette" aria-hidden="true"></div>
+            <div class="hero-minimal-title" aria-label="CODESIGN.WY">
+              <span class="hero-minimal-title-co">CO</span><span class="hero-minimal-title-de">DE</span><span class="hero-minimal-title-sign">SIGN</span><span class="hero-minimal-title-suffix">.WY</span>
+            </div>
+            <div class="hero-aurora hero-aurora-left"></div>
+            <div class="hero-aurora hero-aurora-right"></div>
+            <div class="hero-spotlight"></div>
+            <div class="hero-rainveil" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="hero-wetglass" aria-hidden="true"></div>
+            <div class="grid-orbit grid-orbit-one"></div>
+            <div class="grid-orbit grid-orbit-two"></div>
+            <div class="hero-frame hero-frame-top-left"></div>
+            <div class="hero-frame hero-frame-top-right"></div>
+            <div class="hero-frame hero-frame-bottom-left"></div>
+            <div class="hero-frame hero-frame-bottom-right"></div>
+
+            <div class="particle-cloud" aria-hidden="true">
+              <span>✾</span>
+              <span>❁</span>
+              <span>✦</span>
+              <span>✧</span>
+              <span>❋</span>
+              <span>✵</span>
+              <span>✿</span>
+              <span>✺</span>
+              <span>✧</span>
+              <span>✦</span>
+            </div>
+
+            <div class="hero-statusline">
+              <span class="status-pill">
+              <span class="status-dot"></span>
+                <span data-i18n="status_ready">SYS.READY</span>
+              </span>
+              <span class="eyebrow" data-i18n="data_stream">[DATA.STREAM]</span>
+            </div>
+
+            <div class="hero-archive-note">
+              <span class="hero-archive-kicker" data-i18n="home_archive_kicker">AFTER RAIN ARCHIVE</span>
+              <p data-i18n="home_archive_note">
+                Condition: after rain. Signal: stable. A personal archive built between systems, stories, and lived experience.
+              </p>
+            </div>
+
+            <div class="hero-title-stage">
+              <div class="hero-wordfield" aria-hidden="true">
+                <span>DESIGN</span>
+                <span>CODE</span>
+                <span>CO-DESIGN</span>
+                <span>WY</span>
+              </div>
+              <h1 class="hero-title" aria-label="CODESIGN.WY">
+                <span class="hero-title-layer hero-title-layer-back" aria-hidden="true">CODESIGN.WY</span>
+                <span class="hero-title-layer hero-title-layer-mid" aria-hidden="true">CODESIGN.WY</span>
+                <span class="hero-title-text">CODESIGN.WY</span>
+              </h1>
+            </div>
+
+            <div class="hero-definition" aria-hidden="true">
+              <span>DESIGN</span>
+              <span>CODE</span>
+              <span>CO-DESIGN</span>
+              <span>WY</span>
+            </div>
+
+            <div class="hero-copy">
+              <p data-i18n="home_hero_copy">
+                Exploring the intersection of AI, Data, and Design. A curated hub
+                for digital insights, creative tools, and data-driven stories.
+              </p>
+            </div>
+
+            <div class="hero-signal-rail" aria-label="Archive signals">
+              <article class="hero-signal-card">
+                <span class="hero-signal-label" data-i18n="home_signal_condition_label">CONDITION</span>
+                <p class="hero-signal-value" data-i18n="home_signal_condition_value">After rain / low light / stable signal</p>
+              </article>
+              <article class="hero-signal-card">
+                <span class="hero-signal-label" data-i18n="home_signal_method_label">PRACTICE</span>
+                <p class="hero-signal-value" data-i18n="home_signal_method_value">Design first, code enabled, collaboration aware</p>
+              </article>
+              <article class="hero-signal-card">
+                <span class="hero-signal-label" data-i18n="home_signal_current_label">CURRENTLY</span>
+                <p class="hero-signal-value" data-i18n="home_signal_current_value">Collecting systems, stories, and cities in motion</p>
+              </article>
+            </div>
+
+            <div class="hero-waterline" aria-hidden="true"></div>
+
+            <a class="scroll-prompt" href="#experience" data-view-link="experience" data-i18n="home_scroll">
+              initiate_scroll()
+            </a>
+          </section>
+
+          <section class="feature-grid" aria-label="Site overview">
+            <a class="feature-card" href="#projects" data-view-link="projects">
+              <span class="feature-index">01 / PORTAL</span>
+              <h2 data-i18n="card_projects_title">Projects</h2>
+              <p data-i18n="card_projects_copy">
+                Selected digital builds, portfolio experiments, and product
+                concepts in motion.
+              </p>
+            </a>
+            <a class="feature-card" href="#ai-library" data-view-link="ai-library">
+              <span class="feature-index">02 / PORTAL</span>
+              <h2 data-i18n="card_ai_library_title">AI Library</h2>
+              <p data-i18n="card_ai_library_copy">
+                Curated tools, prompts, references, and workflow notes for
+                practical creative AI.
+              </p>
+            </a>
+            <a class="feature-card" href="#experience" data-view-link="experience">
+              <span class="feature-index">03 / PORTAL</span>
+              <h2 data-i18n="card_experience_title">Experience</h2>
+              <p data-i18n="card_experience_copy">
+                Roles, collaborations, and systems-thinking across design and
+                frontend execution.
+              </p>
+            </a>
+          </section>
+        </section>
+
+        <section class="view subpage" id="view-experience" data-view="experience">
+          <div class="dotfield-bg" aria-hidden="true">
+            <div
+              class="dotfield-container"
+              data-dotfield
+              data-gradient-from="#1c326e"
+              data-gradient-to="#394c7b"
+              data-glow-color="#0a0d15"
+            >
+              <canvas class="dotfield-canvas"></canvas>
+              <svg class="dotfield-glow" aria-hidden="true">
+                <defs>
+                  <radialGradient>
+                    <stop offset="0%"></stop>
+                    <stop offset="100%" stop-color="transparent"></stop>
+                  </radialGradient>
+                </defs>
+                <circle cx="-9999" cy="-9999" r="100"></circle>
+              </svg>
+            </div>
+          </div>
+          <section class="projects-showcase-hero">
+            <div class="projects-showcase-copy">
+              <span class="section-kicker" data-i18n="experience_kicker">03 / Experience</span>
+              <h1 data-i18n="experience_title">Personal Experience</h1>
+              <p data-i18n="experience_copy">
+                I work across content structure, visual design, and frontend
+                execution to turn vague ideas into clear, usable experiences.
+              </p>
+            </div>
+            <div class="experience-hero-art" aria-label="Interactive experience badge preview">
+              <div id="experience-lanyard-mount" class="experience-lanyard-mount">
+                <div class="experience-lanyard-fallback">
+                  <span>Interactive Badge</span>
+                  <strong>CODESIGN.WY</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="projects-showcase-grid">
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-five">
+                <div class="showcase-overlay showcase-overlay-grid"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="experience_research_tag">RESEARCH</span>
+                <h3 data-i18n="experience_research_copy">Clarifying audience, goals, and information hierarchy before visual decisions begin.</h3>
+                <p data-i18n="experience_research_meta">Discovery work, framing, and decision-making structure before execution starts.</p>
+              </div>
+            </article>
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-two">
+                <div class="showcase-overlay showcase-overlay-dashboard"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="experience_systems_tag">SYSTEMS</span>
+                <h3 data-i18n="experience_systems_copy">Building scalable page logic, content groupings, and repeatable interaction patterns.</h3>
+                <p data-i18n="experience_systems_meta">Modular architecture, reusable sections, and maintainable content systems.</p>
+              </div>
+            </article>
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-six">
+                <div class="showcase-overlay showcase-overlay-signal"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="experience_execution_tag">EXECUTION</span>
+                <h3 data-i18n="experience_execution_copy">Translating concepts into refined interfaces with responsive, maintainable frontend structure.</h3>
+                <p data-i18n="experience_execution_meta">Frontend delivery, responsive refinement, and design-to-build continuity.</p>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="view subpage" id="view-projects" data-view="projects">
+          <div class="dotfield-bg" aria-hidden="true">
+            <div
+              class="dotfield-container"
+              data-dotfield
+              data-gradient-from="#1c326e"
+              data-gradient-to="#394c7b"
+              data-glow-color="#0a0d15"
+            >
+              <canvas class="dotfield-canvas"></canvas>
+              <svg class="dotfield-glow" aria-hidden="true">
+                <defs>
+                  <radialGradient>
+                    <stop offset="0%"></stop>
+                    <stop offset="100%" stop-color="transparent"></stop>
+                  </radialGradient>
+                </defs>
+                <circle cx="-9999" cy="-9999" r="100"></circle>
+              </svg>
+            </div>
+          </div>
+          <section class="projects-showcase-hero">
+            <div class="projects-showcase-copy">
+              <span class="section-kicker" data-i18n="projects_kicker">01 / Projects</span>
+              <h1 data-i18n="projects_title">Featured Projects</h1>
+              <p data-i18n="projects_copy">
+                Portfolio experiences, AI-supported tools, and design-led builds
+                that emphasize clarity, tone, and usable structure.
+              </p>
+            </div>
+          </section>
+
+          <section class="projects-section">
+            <div class="projects-section-heading">
+              <h2 class="projects-section-title">
+                <span class="projects-section-icon" aria-hidden="true">✦</span>
+                <span data-i18n="projects_mobile_title">Mobile Design & Development</span>
+              </h2>
+            </div>
+            <div class="projects-mobile-grid">
+              <article class="showcase-card project-work-card">
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-bright"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/beehero.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_mobile_card_1_tag_1">AI Native App</span>
+                    <span class="project-tag" data-i18n="projects_mobile_card_1_tag_2">National 1st Prize</span>
+                  </div>
+                  <h3 data-i18n="projects_mobile_card_1_title">Bee Hero</h3>
+                  <p data-i18n="projects_mobile_card_1_meta">聚焦儿童自然知识科普，构建AI探索+AR种植的趣味体验。</p>
+                </div>
+              </article>
+              <article class="showcase-card project-work-card">
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-clean"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/collabear.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_mobile_card_2_tag_1">AR Learning</span>
+                    <span class="project-tag" data-i18n="projects_mobile_card_2_tag_2">iF Design Talent Award</span>
+                  </div>
+                  <h3 data-i18n="projects_mobile_card_2_title">CollabEar</h3>
+                  <p data-i18n="projects_mobile_card_2_meta">通过AR情境体验，助力听障儿童在日常家庭环境中学习口语。</p>
+                </div>
+              </article>
+              <article class="showcase-card project-work-card">
+                <div
+                  class="showcase-visual showcase-visual-photo"
+                  style="--project-image: url('https://images.unsplash.com/photo-1507666405895-422eee7d517f?auto=format&fit=crop&w=1080&q=80'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_mobile_card_3_tag_1">Urban Wildlife</span>
+                    <span class="project-tag" data-i18n="projects_mobile_card_3_tag_2">Citizen Science</span>
+                  </div>
+                  <h3 data-i18n="projects_mobile_card_3_title">BIO-NIGHBOR</h3>
+                  <p data-i18n="projects_mobile_card_3_meta">Helps citizens mark and collect urban wildlife information anytime, turning meaningful encounters into a shared record.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="projects-section">
+            <div class="projects-section-heading">
+              <h2 class="projects-section-title">
+                <span class="projects-section-icon" aria-hidden="true">✦</span>
+                <span data-i18n="projects_space_title">Immersive Spatial Experience</span>
+              </h2>
+            </div>
+            <div class="projects-space-grid">
+              <article class="showcase-card project-work-card project-span-2">
+                <div
+                  class="showcase-visual showcase-visual-photo"
+                  style="--project-image: url('https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwY2hpcCUyMHByb2Nlc3NvciUyMGZ1dHVyaXN0aWN8ZW58MXx8fHwxNzY5NDA4MTUzfDA&ixlib=rb-4.1.0&q=80&w=1080'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_1_tag_1">AI Agent</span>
+                    <span class="project-tag" data-i18n="projects_space_card_1_tag_2">CHI 2025</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_1_title">MyAIPal</h3>
+                  <p data-i18n="projects_space_card_1_meta">Transforms everyday objects into personalized AI conversational agents within mixed reality environments.</p>
+                </div>
+              </article>
+              <article class="showcase-card project-work-card">
+                <div
+                  class="showcase-visual showcase-visual-photo"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/dreamsongs.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_2_tag_1">Embodied Immersion</span>
+                    <span class="project-tag" data-i18n="projects_space_card_2_tag_2">SIGGRAPH Asia 2023</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_2_title">DreamSongs</h3>
+                  <p data-i18n="projects_space_card_2_meta">融入身体互动的苗族古歌虚拟叙事体验</p>
+                </div>
+              </article>
+              <article class="showcase-card project-work-card">
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-clean"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/mythoscape.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_3_tag_1">MR Interaction</span>
+                    <span class="project-tag" data-i18n="projects_space_card_3_tag_2">IEEE VR XR Gallery</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_3_title">Mythoscape</h3>
+                  <p data-i18n="projects_space_card_3_meta">一场围绕真实物体互动的MR山海经游戏</p>
+                </div>
+              </article>
+              <article class="showcase-card project-work-card project-span-2">
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-clean"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/candy.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_4_tag_1">AR On-site</span>
+                    <span class="project-tag" data-i18n="projects_space_card_4_tag_2">Huawei Hetu</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_4_title">751 CANDY FACTORY</h3>
+                  <p data-i18n="projects_space_card_4_meta">Built a mixed virtual-physical candy world on site within the 751 Power Square district.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="view subpage" id="view-ai-library" data-view="ai-library">
+          <div class="dotfield-bg" aria-hidden="true">
+            <div
+              class="dotfield-container"
+              data-dotfield
+              data-gradient-from="#1c326e"
+              data-gradient-to="#394c7b"
+              data-glow-color="#0a0d15"
+            >
+              <canvas class="dotfield-canvas"></canvas>
+              <svg class="dotfield-glow" aria-hidden="true">
+                <defs>
+                  <radialGradient>
+                    <stop offset="0%"></stop>
+                    <stop offset="100%" stop-color="transparent"></stop>
+                  </radialGradient>
+                </defs>
+                <circle cx="-9999" cy="-9999" r="100"></circle>
+              </svg>
+            </div>
+          </div>
+          <section class="projects-showcase-hero">
+            <div class="projects-showcase-copy">
+              <span class="section-kicker" data-i18n="ai_kicker">02 / AI Library</span>
+              <h1 data-i18n="ai_title">AI Library</h1>
+              <p data-i18n="ai_copy">
+                A growing collection of prompts, resources, process maps, and tool
+                observations for creative and productive AI-native work.
+              </p>
+            </div>
+          </section>
+
+          <section class="projects-showcase-grid">
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-one">
+                <div class="showcase-overlay showcase-overlay-terminal"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="ai_patterns_tag">PROMPT PATTERNS</span>
+                <h3 data-i18n="ai_patterns_copy">Reusable prompt structures for ideation, drafting, and decision support.</h3>
+                <p data-i18n="ai_patterns_meta">Prompt scaffolds, framing templates, and repeatable creative instructions.</p>
+              </div>
+            </article>
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-four">
+                <div class="showcase-metric">
+                  <strong>24</strong>
+                  <span data-i18n="ai_metric_label">Workflow notes</span>
+                </div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="ai_models_tag">MODEL NOTES</span>
+                <h3 data-i18n="ai_models_copy">Comparisons and observations about where different models perform best.</h3>
+                <p data-i18n="ai_models_meta">Strengths, limits, and practical notes for selecting the right model quickly.</p>
+              </div>
+            </article>
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-three">
+                <div class="showcase-overlay showcase-overlay-aurora"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="ai_recipes_tag">AUTOMATION RECIPES</span>
+                <h3 data-i18n="ai_recipes_copy">Step-based AI workflows that turn repeated tasks into reliable systems.</h3>
+                <p data-i18n="ai_recipes_meta">Research flows, content pipelines, and operational shortcuts for everyday work.</p>
+              </div>
+            </article>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./experience-lanyard.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
