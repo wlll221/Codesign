@@ -59,7 +59,7 @@
           <a href="#home" data-view-link="home" data-i18n="nav_home">Home</a>
           <a href="#projects" data-view-link="projects" data-i18n="nav_projects">Projects</a>
           <a href="#ai-library" data-view-link="ai-library" data-i18n="nav_ai_library">AI Library</a>
-          <a href="#experience" data-view-link="experience" data-i18n="nav_experience">Experience</a>
+          <a href="#experience" data-view-link="experience" data-i18n="nav_experience">About</a>
         </nav>
         <div class="toolbar-actions">
           <button class="toolbar-chip toolbar-button" type="button">DARK</button>
@@ -83,8 +83,25 @@
             <div class="hero-minimal-glow hero-minimal-glow-three" aria-hidden="true"></div>
             <div class="hero-minimal-glow hero-minimal-glow-four" aria-hidden="true"></div>
             <div class="hero-minimal-vignette" aria-hidden="true"></div>
-            <div class="hero-minimal-title" aria-label="CODESIGN.WY">
-              <span class="hero-minimal-title-co">CO</span><span class="hero-minimal-title-de">DE</span><span class="hero-minimal-title-sign">SIGN</span><span class="hero-minimal-title-suffix">.WY</span>
+            <div class="hero-minimal-stack">
+              <div class="hero-minimal-focus-row" aria-label="Primary focus tags">
+                <span class="hero-focus-chip" data-focus-index="0">Design</span>
+                <span class="hero-focus-chip" data-focus-index="1">AI·UX</span>
+                <span class="hero-focus-chip" data-focus-index="2">Prototype</span>
+                <div class="hero-focus-frame" aria-hidden="true">
+                  <span class="hero-focus-corner top-left"></span>
+                  <span class="hero-focus-corner top-right"></span>
+                  <span class="hero-focus-corner bottom-left"></span>
+                  <span class="hero-focus-corner bottom-right"></span>
+                </div>
+              </div>
+              <div class="hero-minimal-title" aria-label="CODESIGN.WY">
+                <span class="hero-minimal-title-code">CODE</span><span class="hero-minimal-title-signature">SIGN.WY</span>
+              </div>
+              <p class="hero-minimal-subtitle" aria-live="polite">
+                <span class="hero-minimal-subtitle-text"></span>
+                <span class="hero-minimal-subtitle-cursor" aria-hidden="true">●</span>
+              </p>
             </div>
             <div class="hero-aurora hero-aurora-left"></div>
             <div class="hero-aurora hero-aurora-right"></div>
@@ -185,31 +202,282 @@
             </a>
           </section>
 
-          <section class="feature-grid" aria-label="Site overview">
-            <a class="feature-card" href="#projects" data-view-link="projects">
-              <span class="feature-index">01 / PORTAL</span>
-              <h2 data-i18n="card_projects_title">Projects</h2>
-              <p data-i18n="card_projects_copy">
-                Selected digital builds, portfolio experiments, and product
-                concepts in motion.
-              </p>
-            </a>
-            <a class="feature-card" href="#ai-library" data-view-link="ai-library">
-              <span class="feature-index">02 / PORTAL</span>
-              <h2 data-i18n="card_ai_library_title">AI Library</h2>
-              <p data-i18n="card_ai_library_copy">
-                Curated tools, prompts, references, and workflow notes for
-                practical creative AI.
-              </p>
-            </a>
-            <a class="feature-card" href="#experience" data-view-link="experience">
-              <span class="feature-index">03 / PORTAL</span>
-              <h2 data-i18n="card_experience_title">Experience</h2>
-              <p data-i18n="card_experience_copy">
-                Roles, collaborations, and systems-thinking across design and
-                frontend execution.
-              </p>
-            </a>
+          <section class="home-section expertise-section" id="home-expertise" aria-labelledby="expertise-heading">
+            <div class="home-section-shell expertise-layout">
+              <div class="expertise-stage" aria-hidden="true">
+                <span class="expertise-float-note expertise-float-note-top">14%</span>
+                <span class="expertise-float-note expertise-float-note-bottom">21%</span>
+                <span class="expertise-stage-dot expertise-stage-dot-top"></span>
+                <span class="expertise-stage-dot expertise-stage-dot-bottom"></span>
+                <span class="expertise-stage-dot expertise-stage-dot-mid"></span>
+                <span class="expertise-stage-link expertise-stage-link-top"></span>
+                <span class="expertise-stage-link expertise-stage-link-bottom"></span>
+                <span class="expertise-stage-link expertise-stage-link-side"></span>
+                <span class="expertise-stage-link expertise-stage-link-dashed"></span>
+                <span class="expertise-stage-joint"></span>
+
+                <article class="expertise-card expertise-node expertise-node-design" data-expertise-card>
+                  <div class="expertise-node-shell">
+                    <div class="expertise-node-art expertise-node-art-design">
+                      <span class="design-grid design-grid-v"></span>
+                      <span class="design-grid design-grid-h"></span>
+                      <span class="design-type design-type-a">A</span>
+                      <span class="design-type design-type-b">a</span>
+                      <span class="design-line design-line-main"></span>
+                      <span class="design-line design-line-sub"></span>
+                      <span class="design-orbit"></span>
+                      <span class="design-dot design-dot-one"></span>
+                      <span class="design-dot design-dot-two"></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="expertise-card expertise-node expertise-node-build" data-expertise-card>
+                  <div class="expertise-node-shell">
+                    <div class="expertise-node-art expertise-node-art-build">
+                      <span class="build-cube build-cube-top"></span>
+                      <span class="build-cube build-cube-mid"></span>
+                      <span class="build-cube build-cube-base"></span>
+                      <span class="build-core"></span>
+                      <span class="build-axis build-axis-v"></span>
+                      <span class="build-axis build-axis-h"></span>
+                      <span class="build-point build-point-one"></span>
+                      <span class="build-point build-point-two"></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="expertise-card expertise-node expertise-node-collab" data-expertise-card>
+                  <div class="expertise-node-shell">
+                    <div class="expertise-node-art expertise-node-art-collab">
+                      <span class="collab-orbit collab-orbit-one"></span>
+                      <span class="collab-orbit collab-orbit-two"></span>
+                      <span class="collab-orbit collab-orbit-three"></span>
+                      <span class="collab-node collab-node-one"></span>
+                      <span class="collab-node collab-node-two"></span>
+                      <span class="collab-node collab-node-three"></span>
+                      <span class="collab-node collab-node-four"></span>
+                      <span class="collab-node collab-node-five"></span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="expertise-method">
+                <div class="expertise-method-header">
+                  <span class="expertise-method-kicker">MY METHOD</span>
+                  <span class="expertise-method-rule" aria-hidden="true"></span>
+                </div>
+
+                <div class="expertise-method-rail" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="expertise-method-list">
+                  <article class="expertise-method-item">
+                    <span class="expertise-method-index">01</span>
+                    <h2 id="expertise-heading" data-i18n="home_expertise_card_1_title">AI Experience Design</h2>
+                    <p data-i18n="home_expertise_card_1_copy">
+                      Designing clear and usable experiences for AI assistants, agents, and intelligent tools.
+                    </p>
+                    <div class="expertise-card-tools">
+                      <span class="expertise-tools-label" data-i18n="home_tools_label">Tools</span>
+                      <span data-i18n="home_expertise_card_1_tools">Figma、Sketch</span>
+                    </div>
+                  </article>
+
+                  <article class="expertise-method-item">
+                    <span class="expertise-method-index">02</span>
+                    <h3 data-i18n="home_expertise_card_2_title">Prototype Development</h3>
+                    <p data-i18n="home_expertise_card_2_copy">
+                      Building testable demos with code, AI tools, and interactive prototyping workflows.
+                    </p>
+                    <div class="expertise-card-tools">
+                      <span class="expertise-tools-label" data-i18n="home_tools_label">Tools</span>
+                      <span data-i18n="home_expertise_card_2_tools">Codex、Unity、Xcode</span>
+                    </div>
+                  </article>
+
+                  <article class="expertise-method-item">
+                    <span class="expertise-method-index">03</span>
+                    <h3 data-i18n="home_expertise_card_3_title">Product Collaboration</h3>
+                    <p data-i18n="home_expertise_card_3_copy">
+                      Translating user needs, AI capabilities, and business goals into product flows that can move forward with teams.
+                    </p>
+                    <div class="expertise-card-tools">
+                      <span class="expertise-tools-label" data-i18n="home_tools_label">Tools</span>
+                      <span data-i18n="home_expertise_card_3_tools">Office、SPSS</span>
+                    </div>
+                  </article>
+                </div>
+
+                <p class="expertise-method-summary">
+                  A system where design, code, and collaboration reinforce each other.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="work-marquee-transition" aria-label="Work marquee transition">
+            <div class="work-marquee-viewport">
+              <div class="work-marquee-track">
+                <div class="work-marquee-group" aria-hidden="true">
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                </div>
+                <div class="work-marquee-group" aria-hidden="true">
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                  <span class="work-marquee-item"><span>WORK</span><span class="work-marquee-arrow">↘</span></span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="home-section work-section" id="home-work" aria-labelledby="work-heading">
+            <h2 id="work-heading" class="sr-only" data-i18n="home_work_title">Featured Work</h2>
+            <div class="work-carousel" data-work-carousel>
+              <article class="work-slide is-active" data-work-slide data-work-index="0" data-work-kind="agent">
+                <div class="work-slide-bg"></div>
+                <div class="work-slide-overlay"></div>
+                <div class="home-section-shell work-slide-shell">
+                  <div class="work-media-frame">
+                    <div class="work-media work-media-agent" aria-hidden="true">
+                      <div class="work-agent-card work-agent-card-main">
+                        <span class="work-agent-pill">TASK AGENT</span>
+                        <div class="work-agent-lines">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+                        <div class="work-agent-panel">
+                          <span class="work-agent-dot"></span>
+                          <span class="work-agent-dot"></span>
+                          <span class="work-agent-dot"></span>
+                        </div>
+                      </div>
+                      <div class="work-agent-card work-agent-card-side"></div>
+                    </div>
+                  </div>
+                  <div class="work-slide-copy">
+                    <span class="work-slide-index">01</span>
+                    <h3 data-i18n="home_work_card_1_title">智能任务Agent</h3>
+                    <p class="work-slide-tags" data-i18n="home_work_card_1_tags">AI Task Assistant / 全链路体验设计 / Alibaba Amap</p>
+                    <p class="work-slide-description" data-i18n="home_work_card_1_copy">
+                      Designing conversational task flows, structured task cards, and scalable AI interaction patterns for a map-based intelligent assistant.
+                    </p>
+                    <a class="work-slide-button" href="#projects" data-view-link="projects" data-i18n="home_work_button">View Case</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="work-slide" data-work-slide data-work-index="1" style="--work-image: url('file:///Users/yuwang/Downloads/beehero.png');">
+                <div class="work-slide-bg work-slide-bg-image"></div>
+                <div class="work-slide-overlay"></div>
+                <div class="home-section-shell work-slide-shell">
+                  <div class="work-media-frame">
+                    <div class="work-media work-media-image">
+                      <img src="file:///Users/yuwang/Downloads/beehero.png" alt="Bee Hero preview" />
+                    </div>
+                  </div>
+                  <div class="work-slide-copy">
+                    <span class="work-slide-index">02</span>
+                    <h3 data-i18n="home_work_card_2_title">Bee Hero</h3>
+                    <p class="work-slide-tags" data-i18n="home_work_card_2_tags">AI + AR Mobile App / National 1st Prize</p>
+                    <p class="work-slide-description" data-i18n="home_work_card_2_copy">
+                      An AI-native mobile app that helps children explore plants through recognition, voice Q&amp;A, and playful AR interactions.
+                    </p>
+                    <a class="work-slide-button" href="#projects" data-view-link="projects" data-i18n="home_work_button">View Case</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="work-slide" data-work-slide data-work-index="2" style="--work-image: url('https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwY2hpcCUyMHByb2Nlc3NvciUyMGZ1dHVyaXN0aWN8ZW58MXx8fHwxNzY5NDA4MTUzfDA&ixlib=rb-4.1.0&q=80&w=1080');">
+                <div class="work-slide-bg work-slide-bg-image"></div>
+                <div class="work-slide-overlay"></div>
+                <div class="home-section-shell work-slide-shell">
+                  <div class="work-media-frame">
+                    <div class="work-media work-media-image">
+                      <img src="https://images.unsplash.com/photo-1749006590475-4592a5dbf99f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwY2hpcCUyMHByb2Nlc3NvciUyMGZ1dHVyaXN0aWN8ZW58MXx8fHwxNzY5NDA4MTUzfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="MyAIPal preview" />
+                    </div>
+                  </div>
+                  <div class="work-slide-copy">
+                    <span class="work-slide-index">03</span>
+                    <h3 data-i18n="home_work_card_3_title">MyAIPal</h3>
+                    <p class="work-slide-tags" data-i18n="home_work_card_3_tags">MR AI Agent / CHI EA 2025</p>
+                    <p class="work-slide-description" data-i18n="home_work_card_3_copy">
+                      Exploring how everyday objects can become personalized AI agents in mixed reality.
+                    </p>
+                    <a class="work-slide-button" href="#projects" data-view-link="projects" data-i18n="home_work_button">View Case</a>
+                  </div>
+                </div>
+              </article>
+
+              <button class="work-carousel-next" type="button" data-work-next aria-label="Show next project">
+                <span>NEXT</span>
+              </button>
+            </div>
+
+            <div class="home-section-shell work-carousel-indicators-shell">
+              <div class="work-carousel-indicators" data-work-indicators aria-label="Featured work slides">
+                <button class="work-indicator is-active" type="button" data-work-dot="0" aria-label="Go to project 1"></button>
+                <button class="work-indicator" type="button" data-work-dot="1" aria-label="Go to project 2"></button>
+                <button class="work-indicator" type="button" data-work-dot="2" aria-label="Go to project 3"></button>
+              </div>
+            </div>
+          </section>
+
+          <section class="home-section connect-section" id="home-connect" aria-labelledby="connect-heading">
+            <div class="home-section-shell connect-layout" data-home-reveal>
+              <div class="connect-copy">
+                <span class="home-section-kicker">04 / CONNECT</span>
+                <h2 id="connect-heading" data-i18n="home_connect_title">Connect Me</h2>
+                <p data-i18n="home_connect_copy">Let’s design intelligent experiences together.</p>
+              </div>
+
+              <div class="connect-board">
+                <div class="connect-board-grid" aria-hidden="true"></div>
+                <div class="connect-channel-column">
+                  <span class="connect-caption" data-i18n="home_connect_channels">Channels</span>
+                  <div class="connect-channel-list">
+                    <a class="connect-channel-item" href="mailto:hello@codesignwy.com">
+                      <span class="connect-channel-icon">✦</span>
+                      <span>Email</span>
+                    </a>
+                    <a class="connect-channel-item" href="https://github.com" target="_blank" rel="noreferrer">
+                      <span class="connect-channel-icon">✦</span>
+                      <span>GitHub</span>
+                    </a>
+                    <div class="connect-channel-item">
+                      <span class="connect-channel-icon">✦</span>
+                      <span>Xiaohongshu / ID</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="connect-placeholder-grid">
+                  <div class="connect-placeholder-card">
+                    <span class="connect-caption" data-i18n="home_connect_placeholder_1_label">Portrait / Placeholder</span>
+                    <div class="connect-placeholder-visual"></div>
+                    <span class="connect-placeholder-meta" data-i18n="home_connect_placeholder_meta">To be replaced with your photo</span>
+                  </div>
+                  <div class="connect-placeholder-card">
+                    <span class="connect-caption" data-i18n="home_connect_placeholder_2_label">Social / Placeholder</span>
+                    <div class="connect-placeholder-visual connect-placeholder-visual-alt"></div>
+                    <span class="connect-placeholder-meta" data-i18n="home_connect_placeholder_meta">To be replaced with your photo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
         </section>
 

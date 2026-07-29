@@ -9,13 +9,20 @@ const heroSection = document.querySelector(".hero");
 const heroTitle = document.querySelector(".hero-title");
 const heroTitleText = document.querySelector(".hero-title-text");
 const heroAuroraSurface = document.querySelector(".hero-aurora-surface");
+const heroSubtitle = document.querySelector(".hero-minimal-subtitle");
+const heroFocusRow = document.querySelector(".hero-minimal-focus-row");
+const expertiseSection = document.querySelector(".expertise-section");
+const workMarqueeTransition = document.querySelector(".work-marquee-transition");
+const workCarousel = document.querySelector("[data-work-carousel]");
+const connectRevealNodes = [...document.querySelectorAll("[data-home-reveal]")];
 let dotFieldsInitialized = false;
+let heroSubtitleTextType = null;
 
 const translations = {
   en: {
     brand_cn: "Code & Design",
     nav_home: "Home",
-    nav_experience: "Experience",
+    nav_experience: "About",
     nav_projects: "Projects",
     nav_ai_library: "AI Library",
     status_ready: "SYS.READY",
@@ -25,6 +32,47 @@ const translations = {
       "Condition: after rain. Signal: stable. A personal archive built between systems, stories, and lived experience.",
     home_hero_copy:
       "Structured by design, extended by code, and shaped through collaboration. A quiet interface for systems, stories, and the worlds I move through.",
+    home_type_line_1:
+      "Structured by design, extended by code, shaped through collaboration",
+    home_type_line_2: "Turning AI ideas into usable product experiences",
+    home_expertise_title: "Expertise",
+    home_expertise_copy:
+      "I design AI-native experiences and prototype intelligent interactions across products, apps, and mixed reality systems.",
+    home_tools_label: "Tools",
+    home_expertise_card_1_title: "AI Experience Design",
+    home_expertise_card_1_copy:
+      "Designing clear and usable experiences for AI assistants, agents, and intelligent tools.",
+    home_expertise_card_1_tools: "Figma、Sketch",
+    home_expertise_card_2_title: "Prototype Development",
+    home_expertise_card_2_copy:
+      "Building testable demos with code, AI tools, and interactive prototyping workflows.",
+    home_expertise_card_2_tools: "Codex、Unity、Xcode",
+    home_expertise_card_3_title: "Product Collaboration",
+    home_expertise_card_3_copy:
+      "Translating user needs, AI capabilities, and business goals into product flows that can move forward with teams.",
+    home_expertise_card_3_tools: "Office、SPSS",
+    home_work_title: "Featured Work",
+    home_work_copy:
+      "A focused selection of AI-native product work, mobile interaction design, and mixed reality experiments.",
+    home_work_card_1_title: "智能任务Agent",
+    home_work_card_1_tags: "AI Task Assistant / 全链路体验设计 / Alibaba Amap",
+    home_work_card_1_copy:
+      "Designing conversational task flows, structured task cards, and scalable AI interaction patterns for a map-based intelligent assistant.",
+    home_work_card_2_title: "Bee Hero",
+    home_work_card_2_tags: "AI + AR Mobile App / National 1st Prize",
+    home_work_card_2_copy:
+      "An AI-native mobile app that helps children explore plants through recognition, voice Q&A, and playful AR interactions.",
+    home_work_card_3_title: "MyAIPal",
+    home_work_card_3_tags: "MR AI Agent / CHI EA 2025",
+    home_work_card_3_copy:
+      "Exploring how everyday objects can become personalized AI agents in mixed reality.",
+    home_work_button: "View Case",
+    home_connect_title: "Connect Me",
+    home_connect_copy: "Let’s design intelligent experiences together.",
+    home_connect_channels: "Channels",
+    home_connect_placeholder_1_label: "Portrait / Placeholder",
+    home_connect_placeholder_2_label: "Social / Placeholder",
+    home_connect_placeholder_meta: "To be replaced with your photo",
     home_signal_condition_label: "CONDITION",
     home_signal_condition_value: "After rain / low light / stable signal",
     home_signal_method_label: "PRACTICE",
@@ -167,7 +215,7 @@ const translations = {
   zh: {
     brand_cn: "代码与设计",
     nav_home: "首页",
-    nav_experience: "经历",
+    nav_experience: "关于",
     nav_projects: "项目",
     nav_ai_library: "AI 资料库",
     status_ready: "系统就绪",
@@ -177,6 +225,46 @@ const translations = {
       "状态：雨后。信号：稳定。一个建立在系统、叙事与真实生活经验之间的个人档案界面。",
     home_hero_copy:
       "以设计为结构，以代码为延展，并在协作中持续成形。这里是一处安静的界面档案，收纳系统、故事与我所经过的世界。",
+    home_type_line_1: "以设计为结构，以代码为延展，并在协作中持续成形",
+    home_type_line_2: "把 AI 想法转化为可用的产品体验",
+    home_expertise_title: "Expertise",
+    home_expertise_copy:
+      "我设计 AI 原生体验，并围绕产品、应用与混合现实系统原型化智能交互。",
+    home_tools_label: "工具",
+    home_expertise_card_1_title: "AI Experience Design",
+    home_expertise_card_1_copy:
+      "为 AI 助手、智能体与智能工具设计清晰、可用且可理解的产品体验。",
+    home_expertise_card_1_tools: "Figma、Sketch",
+    home_expertise_card_2_title: "Prototype Development",
+    home_expertise_card_2_copy:
+      "借助代码、AI 工具与交互式原型工作流，快速构建可测试的体验 demo。",
+    home_expertise_card_2_tools: "Codex、Unity、Xcode",
+    home_expertise_card_3_title: "Product Collaboration",
+    home_expertise_card_3_copy:
+      "把用户需求、AI 能力与业务目标转译为能够被团队推进的产品流程。",
+    home_expertise_card_3_tools: "Office、SPSS",
+    home_work_title: "Featured Work",
+    home_work_copy:
+      "精选三类代表性工作：AI 原生产品、移动交互体验与混合现实研究。",
+    home_work_card_1_title: "智能任务Agent",
+    home_work_card_1_tags: "AI Task Assistant / 全链路体验设计 / Alibaba Amap",
+    home_work_card_1_copy:
+      "为地图场景中的智能助手设计对话式任务流、结构化任务卡片与可扩展的 AI 交互模式。",
+    home_work_card_2_title: "Bee Hero",
+    home_work_card_2_tags: "AI + AR Mobile App / National 1st Prize",
+    home_work_card_2_copy:
+      "一款面向儿童植物探索的 AI 原生移动应用，结合识别、语音问答与趣味 AR 交互。",
+    home_work_card_3_title: "MyAIPal",
+    home_work_card_3_tags: "MR AI Agent / CHI EA 2025",
+    home_work_card_3_copy:
+      "探索如何让日常物品在混合现实中成为个性化 AI 智能体。",
+    home_work_button: "查看案例",
+    home_connect_title: "Connect Me",
+    home_connect_copy: "让我们一起设计智能体验。",
+    home_connect_channels: "渠道",
+    home_connect_placeholder_1_label: "照片占位",
+    home_connect_placeholder_2_label: "社交占位",
+    home_connect_placeholder_meta: "等待替换为你的照片",
     home_signal_condition_label: "状态",
     home_signal_condition_value: "雨后 / 低照度 / 信号稳定",
     home_signal_method_label: "实践",
@@ -360,6 +448,11 @@ const applyLanguage = () => {
       currentLanguage === "zh" ? "切换到英文" : "Switch to Chinese"
     );
   }
+};
+
+const getHeroSubtitleLines = () => {
+  const copy = translations[currentLanguage];
+  return [copy.home_type_line_1, copy.home_type_line_2].filter(Boolean);
 };
 
 const renderView = () => {
@@ -994,6 +1087,441 @@ class DotFieldBackground {
   }
 }
 
+class HeroSubtitleTextType {
+  constructor(container, options = {}) {
+    this.container = container;
+    this.textNode = container?.querySelector(".hero-minimal-subtitle-text") || null;
+    this.cursorNode = container?.querySelector(".hero-minimal-subtitle-cursor") || null;
+    this.texts = options.texts || [];
+    this.typingSpeed = options.typingSpeed ?? 42;
+    this.deletingSpeed = options.deletingSpeed ?? 24;
+    this.pauseDuration = options.pauseDuration ?? 1500;
+    this.initialDelay = options.initialDelay ?? 250;
+    this.currentTextIndex = 0;
+    this.currentCharIndex = 0;
+    this.displayedText = "";
+    this.isDeleting = false;
+    this.timer = null;
+
+    if (!this.container || !this.textNode || this.texts.length === 0) return;
+    this.start();
+  }
+
+  setTexts(texts) {
+    this.texts = Array.isArray(texts) ? texts.filter(Boolean) : [];
+    this.reset();
+    if (this.texts.length > 0) {
+      this.start();
+    }
+  }
+
+  reset() {
+    window.clearTimeout(this.timer);
+    this.timer = null;
+    this.currentTextIndex = 0;
+    this.currentCharIndex = 0;
+    this.displayedText = "";
+    this.isDeleting = false;
+    if (this.textNode) {
+      this.textNode.textContent = "";
+    }
+  }
+
+  start() {
+    window.clearTimeout(this.timer);
+    this.timer = window.setTimeout(() => this.tick(), this.initialDelay);
+  }
+
+  tick() {
+    if (!this.textNode || this.texts.length === 0) return;
+
+    const currentText = this.texts[this.currentTextIndex] || "";
+
+    if (this.isDeleting) {
+      if (this.displayedText.length > 0) {
+        this.displayedText = this.displayedText.slice(0, -1);
+        this.textNode.textContent = this.displayedText;
+        this.timer = window.setTimeout(() => this.tick(), this.deletingSpeed);
+        return;
+      }
+
+      this.isDeleting = false;
+      this.currentTextIndex = (this.currentTextIndex + 1) % this.texts.length;
+      this.currentCharIndex = 0;
+      this.timer = window.setTimeout(() => this.tick(), 220);
+      return;
+    }
+
+    if (this.currentCharIndex < currentText.length) {
+      this.displayedText += currentText[this.currentCharIndex];
+      this.currentCharIndex += 1;
+      this.textNode.textContent = this.displayedText;
+      this.timer = window.setTimeout(() => this.tick(), this.typingSpeed);
+      return;
+    }
+
+    this.timer = window.setTimeout(() => {
+      this.isDeleting = true;
+      this.tick();
+    }, this.pauseDuration);
+  }
+}
+
+class HeroTrueFocus {
+  constructor(container, options = {}) {
+    this.container = container;
+    this.words = [...container.querySelectorAll(".hero-focus-chip")];
+    this.frame = container.querySelector(".hero-focus-frame");
+    this.currentIndex = options.initialIndex ?? 1;
+    this.lastActiveIndex = this.currentIndex;
+    this.animationDuration = options.animationDuration ?? 2;
+    this.handleResize = this.handleResize.bind(this);
+
+    if (!this.container || !this.words.length || !this.frame) return;
+
+    this.container.style.setProperty("--focus-animation-duration", `${this.animationDuration}s`);
+    this.words.forEach((word, index) => {
+      word.addEventListener("pointerenter", () => this.setActive(index));
+      word.addEventListener("mouseenter", () => this.setActive(index));
+      word.addEventListener("focus", () => this.setActive(index));
+    });
+
+    window.addEventListener("resize", this.handleResize);
+    this.setActive(this.currentIndex, false);
+  }
+
+  setActive(index, animate = true) {
+    this.currentIndex = index;
+    this.lastActiveIndex = index;
+    this.words.forEach((word, wordIndex) => {
+      word.classList.toggle("is-active", wordIndex === index);
+    });
+
+    const activeWord = this.words[index];
+    if (!activeWord) return;
+
+    const parentRect = this.container.getBoundingClientRect();
+    const activeRect = activeWord.getBoundingClientRect();
+    const x = activeRect.left - parentRect.left;
+    const y = activeRect.top - parentRect.top;
+    const width = activeRect.width;
+    const height = activeRect.height;
+
+    if (!animate) {
+      const previous = this.frame.style.transition;
+      this.frame.style.transition = "none";
+      this.frame.style.transform = `translate(${x}px, ${y}px)`;
+      this.frame.style.width = `${width}px`;
+      this.frame.style.height = `${height}px`;
+      this.frame.style.opacity = "1";
+      void this.frame.offsetHeight;
+      this.frame.style.transition = previous || "";
+      return;
+    }
+
+    this.frame.style.transform = `translate(${x}px, ${y}px)`;
+    this.frame.style.width = `${width}px`;
+    this.frame.style.height = `${height}px`;
+    this.frame.style.opacity = "1";
+  }
+
+  handleResize() {
+    this.setActive(this.currentIndex, false);
+  }
+}
+
+class ExpertiseSectionController {
+  constructor(section) {
+    this.section = section;
+    this.cards = [...section.querySelectorAll("[data-expertise-card]")];
+    this.methodItems = [...section.querySelectorAll(".expertise-method-item")];
+    this.railDots = [...section.querySelectorAll(".expertise-method-rail span")];
+    this.observer = null;
+    this.sectionObserver = null;
+    this.activeIndex = -1;
+    this.ticking = false;
+    this.loopTimer = null;
+    this.loopIndex = 0;
+    this.isLooping = false;
+    this.handleScroll = this.handleScroll.bind(this);
+    this.handleResize = this.handleResize.bind(this);
+
+    if (!this.section || !this.cards.length) return;
+
+    this.initObserver();
+    this.initSectionObserver();
+    window.addEventListener("scroll", this.handleScroll, { passive: true });
+    window.addEventListener("resize", this.handleResize);
+    this.updateActiveCard();
+  }
+
+  initObserver() {
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -8% 0px",
+      }
+    );
+
+    this.cards.forEach((card) => this.observer.observe(card));
+  }
+
+  initSectionObserver() {
+    this.sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target !== this.section) return;
+
+          if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+            this.startLoop();
+          } else {
+            this.stopLoop();
+            this.updateActiveCard();
+          }
+        });
+      },
+      {
+        threshold: [0.15, 0.45, 0.7],
+      }
+    );
+
+    this.sectionObserver.observe(this.section);
+  }
+
+  handleScroll() {
+    if (this.ticking) return;
+    this.ticking = true;
+    window.requestAnimationFrame(() => {
+      if (!this.isLooping) {
+        this.updateActiveCard();
+      }
+      this.ticking = false;
+    });
+  }
+
+  handleResize() {
+    this.updateActiveCard();
+  }
+
+  updateActiveCard() {
+    if (!this.cards.length) return;
+
+    const viewportCenter = window.innerHeight * 0.52;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    this.cards.forEach((card, index) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(cardCenter - viewportCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    this.setActive(closestIndex);
+  }
+
+  startLoop() {
+    if (this.isLooping || this.cards.length < 2) return;
+    this.isLooping = true;
+    this.loopIndex = this.activeIndex >= 0 ? this.activeIndex : 0;
+    this.setActive(this.loopIndex);
+    this.loopTimer = window.setInterval(() => {
+      this.loopIndex = (this.loopIndex + 1) % this.cards.length;
+      this.setActive(this.loopIndex);
+    }, 2400);
+  }
+
+  stopLoop() {
+    this.isLooping = false;
+    window.clearInterval(this.loopTimer);
+    this.loopTimer = null;
+  }
+
+  setActive(index) {
+    if (index === this.activeIndex) return;
+
+    this.activeIndex = index;
+    this.section.style.setProperty("--expertise-active-index", String(index));
+
+    this.cards.forEach((card, cardIndex) => {
+      card.classList.toggle("is-active", cardIndex === index);
+    });
+
+    this.methodItems.forEach((item, itemIndex) => {
+      item.classList.toggle("is-active", itemIndex === index);
+    });
+
+    this.railDots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === index);
+    });
+  }
+}
+
+class WorkCarouselController {
+  constructor(container) {
+    this.container = container;
+    this.slides = [...container.querySelectorAll("[data-work-slide]")];
+    this.dots = [...document.querySelectorAll("[data-work-dot]")];
+    this.nextButton = container.querySelector("[data-work-next]");
+    this.activeIndex = this.slides.findIndex((slide) => slide.classList.contains("is-active"));
+    this.intervalMs = 5600;
+    this.timer = null;
+    this.paused = false;
+
+    if (!this.container || this.slides.length === 0) return;
+    if (this.activeIndex < 0) this.activeIndex = 0;
+
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+
+    this.dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        this.setActive(index);
+        this.restart();
+      });
+    });
+
+    if (this.nextButton) {
+      this.nextButton.addEventListener("click", () => {
+        this.setActive((this.activeIndex + 1) % this.slides.length);
+        this.restart();
+      });
+    }
+
+    this.container.addEventListener("mouseenter", this.handleMouseEnter);
+    this.container.addEventListener("mouseleave", this.handleMouseLeave);
+
+    this.setActive(this.activeIndex, false);
+    this.start();
+  }
+
+  handleMouseEnter() {
+    this.paused = true;
+    window.clearInterval(this.timer);
+  }
+
+  handleMouseLeave() {
+    this.paused = false;
+    this.start();
+  }
+
+  start() {
+    window.clearInterval(this.timer);
+    if (this.paused || this.slides.length < 2) return;
+    this.timer = window.setInterval(() => {
+      this.setActive((this.activeIndex + 1) % this.slides.length);
+    }, this.intervalMs);
+  }
+
+  restart() {
+    this.start();
+  }
+
+  setActive(index, animate = true) {
+    this.activeIndex = index;
+
+    this.slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-active", slideIndex === index);
+      slide.dataset.state = slideIndex === index ? "active" : "inactive";
+      if (!animate) {
+        slide.style.transition = "none";
+        window.requestAnimationFrame(() => {
+          slide.style.transition = "";
+        });
+      }
+    });
+
+    this.dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-active", dotIndex === index);
+      dot.setAttribute("aria-pressed", dotIndex === index ? "true" : "false");
+    });
+  }
+}
+
+class HomeRevealController {
+  constructor(nodes) {
+    this.nodes = nodes;
+    if (!this.nodes.length) return;
+
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.16,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    this.nodes.forEach((node) => this.observer.observe(node));
+  }
+}
+
+class WorkMarqueeController {
+  constructor(section) {
+    this.section = section;
+    this.viewport = section?.querySelector(".work-marquee-viewport");
+    this.track = section?.querySelector(".work-marquee-track");
+    this.groups = this.track ? [...this.track.querySelectorAll(".work-marquee-group")] : [];
+    this.templateHTML = "";
+    this.resizeTimer = null;
+    this.handleResize = this.handleResize.bind(this);
+
+    if (!this.section || !this.viewport || !this.track || this.groups.length < 2) return;
+
+    const firstItem = this.groups[0].querySelector(".work-marquee-item");
+    if (!firstItem) return;
+
+    this.templateHTML = firstItem.outerHTML;
+    this.rebuild();
+    window.addEventListener("resize", this.handleResize, { passive: true });
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => this.rebuild());
+    }
+  }
+
+  handleResize() {
+    window.clearTimeout(this.resizeTimer);
+    this.resizeTimer = window.setTimeout(() => this.rebuild(), 80);
+  }
+
+  rebuild() {
+    const viewportWidth = this.viewport.clientWidth;
+    if (!viewportWidth || !this.templateHTML) return;
+
+    const sourceGroup = this.groups[0];
+    const cloneGroup = this.groups[1];
+
+    sourceGroup.innerHTML = this.templateHTML;
+    cloneGroup.innerHTML = this.templateHTML;
+
+    let safety = 0;
+    const minimumGroupWidth = viewportWidth * 1.6;
+
+    while (sourceGroup.scrollWidth < minimumGroupWidth && safety < 60) {
+      sourceGroup.insertAdjacentHTML("beforeend", this.templateHTML);
+      safety += 1;
+    }
+
+    cloneGroup.innerHTML = sourceGroup.innerHTML;
+  }
+}
+
 const initializeDotFields = () => {
   if (dotFieldsInitialized) return;
   dotFieldsInitialized = true;
@@ -1016,11 +1544,15 @@ langToggle?.addEventListener("click", () => {
   currentLanguage = currentLanguage === "en" ? "zh" : "en";
   localStorage.setItem("site-language", currentLanguage);
   applyLanguage();
+  heroSubtitleTextType?.setTexts(getHeroSubtitleLines());
   renderView();
 });
 
 window.addEventListener("hashchange", renderView);
 window.addEventListener("load", () => {
+  applyLanguage();
+  renderView();
+
   if (heroSection && heroAuroraSurface && heroSection.classList.contains("hero-water-minimal")) {
     new HeroAuroraSurface(heroAuroraSurface, {
       colorStops: ["#4CA6EC", "#abe4ff", "#2E63FF"],
@@ -1032,7 +1564,32 @@ window.addEventListener("load", () => {
   if (heroSection && heroTitleText && !heroSection.classList.contains("hero-water-minimal")) {
     new HeroScene(heroSection, heroTitleText);
   }
-  applyLanguage();
-  renderView();
+  if (heroSubtitle) {
+    heroSubtitleTextType = new HeroSubtitleTextType(heroSubtitle, {
+      texts: getHeroSubtitleLines(),
+      typingSpeed: 42,
+      deletingSpeed: 24,
+      pauseDuration: 1500,
+      initialDelay: 250,
+    });
+  }
+  if (heroFocusRow) {
+    new HeroTrueFocus(heroFocusRow, {
+      initialIndex: 1,
+      animationDuration: 0.8,
+    });
+  }
+  if (expertiseSection) {
+    new ExpertiseSectionController(expertiseSection);
+  }
+  if (workMarqueeTransition) {
+    new WorkMarqueeController(workMarqueeTransition);
+  }
+  if (workCarousel) {
+    new WorkCarouselController(workCarousel);
+  }
+  if (connectRevealNodes.length) {
+    new HomeRevealController(connectRevealNodes);
+  }
   initializeDotFields();
 });
