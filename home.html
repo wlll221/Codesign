@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | CODESIGN.YUSRA</title>
+    <title>Home | CODESIGN.YOONA</title>
     <meta
       id="meta-description"
       name="description"
-      content="CODESIGN.YUSRA home page reconstructed from the Figma design with responsive behavior."
+      content="CODESIGN.YOONA home page reconstructed from the Figma design with responsive behavior."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -215,16 +215,16 @@
               <img src="./assets/bioneighbor-carousel.png" alt="BioNeighbor product detail" />
             </figure>
             <figure class="figma-selected-montage-card" data-montage-card data-speed="0.02">
-              <img src="/Users/yuwang/Downloads/作品图3.png" alt="Mixed reality headset interaction detail" />
+              <img src="./assets/mr-headset-detail.png" alt="Mixed reality headset interaction detail" />
             </figure>
             <figure class="figma-selected-montage-card" data-montage-card data-speed="-0.01">
-              <img src="/var/folders/92/gvlbwr294fsfk6fs_kkbq4vw0000gn/T/codex-clipboard-4f25ad5a-8b6e-43ed-8297-2f7145ce8a88.png" alt="Dreamlike immersive floral scene" />
+              <img src="./assets/floral-scene.png" alt="Dreamlike immersive floral scene" />
             </figure>
             <figure class="figma-selected-montage-card" data-montage-card data-speed="0.03">
-              <img src="/var/folders/92/gvlbwr294fsfk6fs_kkbq4vw0000gn/T/codex-clipboard-1c744f8d-e286-4945-8058-2aa629c43fb2.png" alt="Daisy emblem icon artwork" />
+              <img src="./assets/daisy-emblem-artwork.png" alt="Daisy emblem icon artwork" />
             </figure>
             <figure class="figma-selected-montage-card" data-montage-card data-speed="0.04">
-              <img src="/var/folders/92/gvlbwr294fsfk6fs_kkbq4vw0000gn/T/codex-clipboard-5a9f873d-c1c8-4c57-ad4d-3a7695b9d869.png" alt="Candy-themed mixed reality scene" />
+              <img src="./assets/candy-mr-scene.png" alt="Candy-themed mixed reality scene" />
             </figure>
           </div>
         </div>
@@ -293,7 +293,7 @@
               </article>
             </div>
             <aside class="figma-core-ability-floating-preview" data-ability-floating-preview aria-hidden="true">
-              <figure class="figma-core-ability-card">
+              <figure class="figma-core-ability-card" data-ability-preview-frame>
                 <img src="./assets/amap-intern-photo.jpg" alt="高德地图搜索智能设计实习预览" data-ability-preview-image />
               </figure>
               <div class="figma-core-ability-notes" data-ability-preview-notes>
@@ -655,7 +655,8 @@
         const coreAbilitiesTable = document.querySelector(".figma-core-abilities-table");
         const coreAbilityRows = Array.from(document.querySelectorAll("[data-ability-row]"));
         const floatingAbilityPreview = document.querySelector("[data-ability-floating-preview]");
-        const floatingAbilityPreviewImage = document.querySelector("[data-ability-preview-image]");
+        const floatingAbilityPreviewFrame = document.querySelector("[data-ability-preview-frame]");
+        let floatingAbilityPreviewImage = document.querySelector("[data-ability-preview-image]");
         const floatingAbilityPreviewNotes = document.querySelector("[data-ability-preview-notes]");
         const aboutIntro = document.querySelector("[data-about-intro]");
         const aboutSticky = document.querySelector("[data-about-sticky]");
@@ -1027,6 +1028,37 @@
           }
         };
 
+        const bindFloatingAbilityPreviewImage = () => {
+          if (!floatingAbilityPreviewImage) return;
+
+          floatingAbilityPreviewImage.addEventListener("click", () => {
+            if (!abilityCompactQuery.matches) return;
+            clearActiveAbility();
+            setFloatingAbilityVisibility(false);
+          });
+
+          floatingAbilityPreviewImage.addEventListener("load", () => {
+            if (activeAbilityIndex >= 0) {
+              positionFloatingAbilityPreview(activeAbilityIndex);
+            }
+          });
+        };
+
+        const renderFloatingAbilityPreviewImage = (previewImage, previewAlt) => {
+          if (!floatingAbilityPreviewFrame || !previewImage) return;
+
+          const image = document.createElement("img");
+          image.src = previewImage;
+          image.alt = previewAlt;
+          image.decoding = "sync";
+          image.loading = "eager";
+          image.setAttribute("data-ability-preview-image", "");
+
+          floatingAbilityPreviewFrame.replaceChildren(image);
+          floatingAbilityPreviewImage = image;
+          bindFloatingAbilityPreviewImage();
+        };
+
         const syncFloatingAbilityPreview = (index) => {
           if (!floatingAbilityPreview || !coreAbilityRows.length) return;
 
@@ -1048,9 +1080,8 @@
             })
             .filter((item) => item.title || item.body);
 
-          if (floatingAbilityPreviewImage && previewImage) {
-            floatingAbilityPreviewImage.src = previewImage;
-            floatingAbilityPreviewImage.alt = previewAlt;
+          if (previewImage) {
+            renderFloatingAbilityPreviewImage(previewImage, previewAlt);
           }
 
           if (floatingAbilityPreviewNotes) {
@@ -1467,23 +1498,9 @@
             });
           }
 
-          if (floatingAbilityPreviewImage) {
-            floatingAbilityPreviewImage.addEventListener("click", () => {
-              if (!abilityCompactQuery.matches) return;
-              clearActiveAbility();
-              setFloatingAbilityVisibility(false);
-            });
-          }
-
           window.addEventListener("scroll", requestAbilityViewportSync, { passive: true });
           window.addEventListener("resize", requestAbilityViewportSync);
-          if (floatingAbilityPreviewImage) {
-            floatingAbilityPreviewImage.addEventListener("load", () => {
-              if (activeAbilityIndex >= 0) {
-                positionFloatingAbilityPreview(activeAbilityIndex);
-              }
-            });
-          }
+          bindFloatingAbilityPreviewImage();
           abilityCompactQuery.addEventListener("change", () => {
             cancelAbilityLeave();
             abilityPointerInside = false;
