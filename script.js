@@ -15,8 +15,12 @@ const expertiseSection = document.querySelector(".expertise-section");
 const workMarqueeTransition = document.querySelector(".work-marquee-transition");
 const workCarousel = document.querySelector("[data-work-carousel]");
 const connectRevealNodes = [...document.querySelectorAll("[data-home-reveal]")];
+const homeScrollButtons = [...document.querySelectorAll("[data-scroll-home]")];
+const skillPreviewPanel = document.querySelector("[data-skill-preview-panel]");
+const skillPreviewImage = document.querySelector("[data-skill-preview-image]");
 let dotFieldsInitialized = false;
 let heroSubtitleTextType = null;
+let pendingHomeScrollTarget = "";
 
 const translations = {
   en: {
@@ -25,8 +29,22 @@ const translations = {
     nav_experience: "About",
     nav_projects: "Projects",
     nav_ai_library: "AI Library",
+    nav_connect: "Connect",
     status_ready: "SYS.READY",
     data_stream: "[DATA.STREAM]",
+    home_kicker: "01 / HOME",
+    home_location: "AI-Native Product Designer · Beijing / London Rhythm",
+    home_intro:
+      "I design interfaces that help AI feel legible, useful, and emotionally grounded across product systems, prototypes, and spatial experiences.",
+    home_side_strategy_label: "CURRENT FOCUS",
+    home_side_strategy_value:
+      "Designing clearer bridges between AI capability, human intent, and product trust.",
+    home_side_archive_label: "ARCHIVE NOTE",
+    home_side_archive_value:
+      "A portfolio home re-authored as a continuous blue gradient landscape with cinematic pacing.",
+    home_scroll_label: "Scroll to Selected Work",
+    home_footer_note:
+      "Structured by design, extended by code, refined through collaboration.",
     home_archive_kicker: "AFTER RAIN ARCHIVE",
     home_archive_note:
       "Condition: after rain. Signal: stable. A personal archive built between systems, stories, and lived experience.",
@@ -51,22 +69,55 @@ const translations = {
     home_expertise_card_3_copy:
       "Translating user needs, AI capabilities, and business goals into product flows that can move forward with teams.",
     home_expertise_card_3_tools: "Office、SPSS",
-    home_work_title: "Featured Work",
+    home_work_title: "Selected Work",
+    home_work_kicker: "02 / SELECTED WORK",
+    home_work_label: "FEATURED WORK",
     home_work_copy:
       "A focused selection of AI-native product work, mobile interaction design, and mixed reality experiments.",
     home_work_card_1_title: "智能任务Agent",
     home_work_card_1_tags: "AI Task Assistant / 全链路体验设计 / Alibaba Amap",
     home_work_card_1_copy:
       "Designing conversational task flows, structured task cards, and scalable AI interaction patterns for a map-based intelligent assistant.",
+    home_work_card_1_body:
+      "From task framing to card hierarchy, the focus was turning complex intent into calm, sequential actions that users can trust at a glance.",
+    home_work_card_1_screen_title: "Plan the next move with confidence.",
+    home_work_card_1_screen_copy:
+      "Structured tasks, contextual prompts, and intelligent action cards for map-native decision making.",
     home_work_card_2_title: "Bee Hero",
     home_work_card_2_tags: "AI + AR Mobile App / National 1st Prize",
     home_work_card_2_copy:
       "An AI-native mobile app that helps children explore plants through recognition, voice Q&A, and playful AR interactions.",
+    home_work_card_2_body:
+      "The experience combines visual recognition, guided storytelling, and reward loops to make learning feel tactile and alive.",
     home_work_card_3_title: "MyAIPal",
     home_work_card_3_tags: "MR AI Agent / CHI EA 2025",
     home_work_card_3_copy:
       "Exploring how everyday objects can become personalized AI agents in mixed reality.",
+    home_work_card_3_body:
+      "This work studies intimacy, embodiment, and ambient intelligence through speculative but testable interaction scenarios.",
     home_work_button: "View Case",
+    home_work_next: "Next Project",
+    home_skills_kicker: "03 / SOFTWARE SKILLS",
+    home_skills_title: "Software Skills",
+    home_skills_intro:
+      "A working stack across interface design, interactive prototyping, development, and AI-assisted making.",
+    home_skill_design_copy:
+      "Figma and Sketch for interface systems, interaction states, flows, rapid layout decisions, and polished visual handoff.",
+    home_skill_build_copy:
+      "Xcode, Unity, and Sublime Text for turning interaction concepts into testable experiences with believable motion and logic.",
+    home_skill_ai_copy:
+      "Codex, Cursor, and prompt systems for prototyping product ideas faster, structuring research, and extending design into code.",
+    home_skill_system_copy:
+      "Information architecture, reusable content logic, and cross-functional design communication that keeps concepts shippable.",
+    home_about_kicker: "04 / ABOUT YU",
+    home_about_title: "About Yu",
+    home_about_lead:
+      "I believe the best AI products feel composed rather than crowded: emotionally clear, structurally calm, and capable of helping people move forward with confidence.",
+    home_about_body:
+      "My design philosophy sits between rigor and softness. I like systems that stay readable, interactions that feel intentional, and prototypes that are expressive enough to invite conversation early.",
+    home_about_gallery_label: "Outside of work",
+    home_about_gallery_copy:
+      "Cities, light, exhibitions, quiet corners, and the small visual fragments that keep my design taste alive.",
     home_connect_title: "Connect Me",
     home_connect_copy: "Let’s design intelligent experiences together.",
     home_connect_channels: "Channels",
@@ -114,7 +165,7 @@ const translations = {
     projects_kicker: "01 / Projects",
     projects_title: "Featured Projects",
     projects_copy:
-      "Portfolio experiences, AI-supported tools, and design-led builds that emphasize clarity, tone, and usable structure.",
+      "A curated selection of projects, including mobile design & development and immersive spatial experiences.",
     projects_mobile_kicker: "01 / Mobile",
     projects_mobile_title: "Mobile Design & Development",
     projects_mobile_card_1_tag: "MOBILE APP",
@@ -130,7 +181,7 @@ const translations = {
       "Supports hearing-impaired children in practicing oral language within everyday home environments through AR-based situational experiences.",
     projects_mobile_card_3_tag_1: "Urban Wildlife",
     projects_mobile_card_3_tag_2: "Citizen Science",
-    projects_mobile_card_3_title: "BIO-NIGHBOR",
+    projects_mobile_card_3_title: "BIO-NEIGHBOR",
     projects_mobile_card_3_meta:
       "Helps citizens mark and collect urban wildlife information anytime, turning meaningful encounters into a shared record.",
     projects_space_kicker: "02 / Space",
@@ -156,6 +207,16 @@ const translations = {
     projects_space_card_4_title: "751 CANDY FACTORY",
     projects_space_card_4_meta:
       "Built a mixed virtual-physical candy world on site within the 751 Power Square district.",
+    projects_space_card_5_tag_1: "Future Retail",
+    projects_space_card_5_tag_2: "BUAA × Alibaba Industry Course",
+    projects_space_card_5_title: "邂逅之境",
+    projects_space_card_5_meta:
+      "Explores future XR commerce experiences through the Chanel Chance series.",
+    projects_space_card_6_tag_1: "Future Social",
+    projects_space_card_6_tag_2: "Prototype Practice",
+    projects_space_card_6_title: "HOLOCHAT",
+    projects_space_card_6_meta:
+      "A future social exploration in mixed reality environments.",
     projects_cta: "Submit Your Project ->",
     projects_portfolio_tag: "PORTFOLIO",
     projects_portfolio_copy: "Brand-led websites with stronger visual storytelling.",
@@ -218,8 +279,22 @@ const translations = {
     nav_experience: "关于",
     nav_projects: "项目",
     nav_ai_library: "AI 资料库",
+    nav_connect: "联系我",
     status_ready: "系统就绪",
     data_stream: "[数据流]",
+    home_kicker: "01 / 首页",
+    home_location: "AI 原生产品设计师 · 北京 / 伦敦节奏",
+    home_intro:
+      "我关注如何让 AI 产品在系统结构、交互逻辑与情绪感受上都更清晰、更可用，也更贴近真实的人。",
+    home_side_strategy_label: "当前关注",
+    home_side_strategy_value:
+      "持续寻找 AI 能力、用户意图与产品信任之间更清晰的连接方式。",
+    home_side_archive_label: "改版注记",
+    home_side_archive_value:
+      "把个人站首页重写成连续流动的蓝色渐变场景，并保留更有叙事感的节奏。",
+    home_scroll_label: "滚动查看精选作品",
+    home_footer_note:
+      "以设计为结构，以代码为延展，并在协作中持续打磨。",
     home_archive_kicker: "雨后档案",
     home_archive_note:
       "状态：雨后。信号：稳定。一个建立在系统、叙事与真实生活经验之间的个人档案界面。",
@@ -243,22 +318,55 @@ const translations = {
     home_expertise_card_3_copy:
       "把用户需求、AI 能力与业务目标转译为能够被团队推进的产品流程。",
     home_expertise_card_3_tools: "Office、SPSS",
-    home_work_title: "Featured Work",
+    home_work_title: "Selected Work",
+    home_work_kicker: "02 / 精选作品",
+    home_work_label: "精选作品",
     home_work_copy:
       "精选三类代表性工作：AI 原生产品、移动交互体验与混合现实研究。",
     home_work_card_1_title: "智能任务Agent",
     home_work_card_1_tags: "AI Task Assistant / 全链路体验设计 / Alibaba Amap",
     home_work_card_1_copy:
       "为地图场景中的智能助手设计对话式任务流、结构化任务卡片与可扩展的 AI 交互模式。",
+    home_work_card_1_body:
+      "从任务 framing 到卡片层级，重点在于把复杂意图转化为用户一眼就能信任的顺序化行动。",
+    home_work_card_1_screen_title: "更安心地规划下一步。",
+    home_work_card_1_screen_copy:
+      "通过结构化任务、上下文提示与智能行动卡片，让地图场景中的决策更清晰。",
     home_work_card_2_title: "Bee Hero",
     home_work_card_2_tags: "AI + AR Mobile App / National 1st Prize",
     home_work_card_2_copy:
       "一款面向儿童植物探索的 AI 原生移动应用，结合识别、语音问答与趣味 AR 交互。",
+    home_work_card_2_body:
+      "通过视觉识别、引导式故事表达与奖励循环，让自然学习变得更有触感和参与感。",
     home_work_card_3_title: "MyAIPal",
     home_work_card_3_tags: "MR AI Agent / CHI EA 2025",
     home_work_card_3_copy:
       "探索如何让日常物品在混合现实中成为个性化 AI 智能体。",
+    home_work_card_3_body:
+      "这个项目围绕亲密感、具身性与环境式智能，搭建可被讨论也可被验证的交互场景。",
     home_work_button: "查看案例",
+    home_work_next: "下一个项目",
+    home_skills_kicker: "03 / 软件技能",
+    home_skills_title: "Software Skills",
+    home_skills_intro:
+      "围绕界面设计、交互原型、开发实现与 AI 协同创作形成的一套工作栈。",
+    home_skill_design_copy:
+      "使用 Figma 与 Sketch 搭建设计系统、状态细节、页面流与高质量视觉交付。",
+    home_skill_build_copy:
+      "借助 Xcode、Unity 与 Sublime Text，把交互概念转化为可信、可测的体验原型。",
+    home_skill_ai_copy:
+      "借助 Codex、Cursor 与提示词系统，更快原型化产品想法、组织研究过程，并让设计延展到代码。",
+    home_skill_system_copy:
+      "通过信息架构、可复用内容逻辑与跨职能沟通，让概念最终能够被稳定推进。",
+    home_about_kicker: "04 / 关于 Yu",
+    home_about_title: "About Yu",
+    home_about_lead:
+      "我相信好的 AI 产品不是堆满能力，而是保持克制、清晰和情绪上的稳定，帮助人更有把握地继续向前。",
+    home_about_body:
+      "我的设计哲学介于理性与柔软之间。我喜欢可读的系统、明确的交互，以及足够有表现力、能尽早引发讨论的原型。",
+    home_about_gallery_label: "工作之外",
+    home_about_gallery_copy:
+      "城市、光线、展览、安静角落，以及那些持续滋养我设计审美的细小视觉碎片。",
     home_connect_title: "Connect Me",
     home_connect_copy: "让我们一起设计智能体验。",
     home_connect_channels: "渠道",
@@ -306,7 +414,7 @@ const translations = {
     projects_kicker: "01 / 项目",
     projects_title: "精选项目",
     projects_copy:
-      "涵盖作品集体验、AI 辅助工具与设计驱动型构建，强调清晰、语气与可用结构。",
+      "精选作品涵盖移动端设计与开发，以及沉浸式空间体验。",
     projects_mobile_kicker: "01 / 移动端",
     projects_mobile_title: "移动端设计与开发",
     projects_mobile_card_1_tag_1: "AI原生应用",
@@ -321,13 +429,13 @@ const translations = {
       "通过AR情境体验，助力听障儿童在日常家庭环境中学习口语。",
     projects_mobile_card_3_tag_1: "城市野生动物",
     projects_mobile_card_3_tag_2: "公民科学家",
-    projects_mobile_card_3_title: "BIO-NIGHBOR",
+    projects_mobile_card_3_title: "BIO-NEIGHBOR",
     projects_mobile_card_3_meta:
       "帮助公民随时标记、收集城市野生动物信息，记录每一次美好相遇。",
     projects_space_kicker: "02 / 空间体验",
     projects_space_title: "沉浸式空间体验",
     projects_space_row_1_label: "空间作品",
-    projects_space_card_1_tag_1: "AI智能体",
+    projects_space_card_1_tag_1: "AI对话伙伴",
     projects_space_card_1_tag_2: "CHI 2025",
     projects_space_card_1_title: "MyAIPal",
     projects_space_card_1_meta:
@@ -347,6 +455,16 @@ const translations = {
     projects_space_card_4_title: "751 CANDY FACTORY",
     projects_space_card_4_meta:
       "在751动力广场区域，现场实景打造虚实融合的糖果世界。",
+    projects_space_card_5_tag_1: "未来购物",
+    projects_space_card_5_tag_2: "北航×阿里校企合作课",
+    projects_space_card_5_title: "邂逅之境",
+    projects_space_card_5_meta:
+      "以香奈儿邂逅系列为例探索未来XR电商体验",
+    projects_space_card_6_tag_1: "未来社交",
+    projects_space_card_6_tag_2: "原型开发实践",
+    projects_space_card_6_title: "HOLOCHAT",
+    projects_space_card_6_meta:
+      "混合现实环境下的未来社交探索",
     projects_cta: "提交你的项目 ->",
     projects_portfolio_tag: "作品集",
     projects_portfolio_copy: "更具品牌表达力与视觉叙事感的网站体验。",
@@ -396,10 +514,21 @@ const translations = {
   },
 };
 
-let currentLanguage = localStorage.getItem("site-language") || "en";
+const storedLanguage = localStorage.getItem("site-language");
+const pageLanguageOverride = document.body.dataset.page === "projects" ? "zh" : null;
+let currentLanguage = pageLanguageOverride || storedLanguage || "en";
 const dotFieldInstances = [];
 
 const getCurrentView = () => {
+  const pageView = document.body.dataset.page;
+  if (pageView) {
+    return pageView;
+  }
+
+  if (views.length === 1) {
+    return views[0].dataset.view || "home";
+  }
+
   const hash = window.location.hash.replace("#", "");
   return validViews.has(hash) ? hash : "home";
 };
@@ -408,13 +537,13 @@ const getViewTitle = (view, language) => {
   const titles = {
     en: {
       home: "CODESIGN.WY",
-      experience: "Experience | CODESIGN.WY",
+      experience: "About | CODESIGN.WY",
       projects: "Projects | CODESIGN.WY",
       "ai-library": "AI Library | CODESIGN.WY",
     },
     zh: {
       home: "CODESIGN.WY",
-      experience: "经历 | CODESIGN.WY",
+      experience: "关于 | CODESIGN.WY",
       projects: "项目 | CODESIGN.WY",
       "ai-library": "AI 资料库 | CODESIGN.WY",
     },
@@ -455,9 +584,30 @@ const getHeroSubtitleLines = () => {
   return [copy.home_type_line_1, copy.home_type_line_2].filter(Boolean);
 };
 
+const scrollToHomeTarget = (targetId) => {
+  if (!targetId) return;
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 const renderView = () => {
   const currentView = getCurrentView();
   document.body.dataset.view = currentView;
+
+  if (views.length <= 1) {
+    if (views[0]) {
+      views[0].hidden = false;
+      views[0].classList.add("is-active");
+    }
+
+    document.title = getViewTitle(currentView, currentLanguage);
+
+    for (const instance of dotFieldInstances) {
+      instance.resize();
+    }
+    return;
+  }
 
   for (const view of views) {
     const isActive = view.dataset.view === currentView;
@@ -473,6 +623,19 @@ const renderView = () => {
 
   for (const instance of dotFieldInstances) {
     instance.resize();
+  }
+
+  if (currentView !== "home") {
+    window.scrollTo({ top: 0, behavior: "auto" });
+    return;
+  }
+
+  if (pendingHomeScrollTarget) {
+    window.requestAnimationFrame(() => {
+      scrollToHomeTarget(pendingHomeScrollTarget);
+      pendingHomeScrollTarget = "";
+    });
+    return;
   }
 
   window.scrollTo({ top: 0, behavior: "auto" });
@@ -629,6 +792,8 @@ class HeroAuroraSurface {
     this.program = null;
     this.gl = null;
     this.canvas = null;
+    this.ctx2d = null;
+    this.mode = "webgl";
     this.positionBuffer = null;
     this.uniforms = null;
     this.frameId = 0;
@@ -838,6 +1003,7 @@ class HeroAuroraSurface {
 
     this.container.innerHTML = "";
     this.container.appendChild(canvas);
+    this.container.dataset.auroraRuntime = "webgl2";
 
     window.addEventListener("resize", this.handleResize);
     this.handleResize();
@@ -848,11 +1014,36 @@ class HeroAuroraSurface {
     if (!this.container) return;
     this.container.dataset.auroraFallback = "true";
     this.container.setAttribute("data-aurora-error", error?.message || "unknown");
+    this.mountCanvasFallback();
+  }
+
+  mountCanvasFallback() {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d", { alpha: true });
+
+    if (!ctx) {
+      this.container.innerHTML = "";
+      return;
+    }
+
+    this.mode = "canvas2d";
+    this.canvas = canvas;
+    this.ctx2d = ctx;
+    this.container.dataset.auroraRuntime = "canvas2d";
+    canvas.style.backgroundColor = "transparent";
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    canvas.style.display = "block";
     this.container.innerHTML = "";
+    this.container.appendChild(canvas);
+
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+    this.update();
   }
 
   handleResize() {
-    if (!this.gl || !this.program || !this.canvas) return;
+    if (!this.canvas) return;
     const width = Math.max(1, this.container.offsetWidth);
     const height = Math.max(1, this.container.offsetHeight);
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -860,17 +1051,163 @@ class HeroAuroraSurface {
     this.canvas.height = Math.round(height * dpr);
     this.canvas.style.width = `${width}px`;
     this.canvas.style.height = `${height}px`;
+
+    if (this.mode === "canvas2d" && this.ctx2d) {
+      this.ctx2d.setTransform(1, 0, 0, 1, 0, 0);
+      this.ctx2d.scale(dpr, dpr);
+      return;
+    }
+
+    if (!this.gl || !this.program) return;
     this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
     this.gl.uniform2f(this.uniforms.resolution, this.canvas.width, this.canvas.height);
   }
 
   update = (time = 0) => {
     this.frameId = window.requestAnimationFrame(this.update);
+    if (this.mode === "canvas2d") {
+      this.drawFallbackFrame(time);
+      return;
+    }
+
     if (!this.gl || !this.program) return;
     this.gl.useProgram(this.program);
     this.gl.uniform1f(this.uniforms.time, time * 0.01 * this.options.speed * 0.1);
     this.gl.drawArrays(this.gl.TRIANGLES, 0, 3);
   };
+
+  drawFallbackFrame(time) {
+    if (!this.ctx2d || !this.canvas) return;
+
+    const ctx = this.ctx2d;
+    const width = Math.max(1, this.container.offsetWidth);
+    const height = Math.max(1, this.container.offsetHeight);
+    const t = time * 0.0009 * Math.max(this.options.speed, 0.7);
+    const blur = Math.max(22, height * 0.055);
+    const alphaScale = 1.0;
+    const blendScale = 1.08 + this.options.blend * 0.54;
+
+    const hexToRgbString = (hex, alpha) => {
+      const value = hex.replace("#", "");
+      const normalized =
+        value.length === 3
+          ? value
+              .split("")
+              .map((char) => char + char)
+              .join("")
+          : value;
+      const num = Number.parseInt(normalized, 16);
+      const r = (num >> 16) & 255;
+      const g = (num >> 8) & 255;
+      const b = num & 255;
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+
+    const drawBlob = ({ x, y, rx, ry, color, phase, alpha }) => {
+      const px =
+        width * x +
+        Math.sin(t + phase) * width * 0.18 +
+        Math.cos(t * 0.6 + phase) * width * 0.08;
+      const py =
+        height * y +
+        Math.cos(t * 1.18 + phase) * height * 0.1 * this.options.amplitude;
+      const prx = width * rx * (1 + Math.sin(t * 0.72 + phase) * 0.16);
+      const pry = height * ry * (1 + Math.cos(t * 0.66 + phase) * 0.2);
+      const radius = Math.max(prx, pry);
+      const gradient = ctx.createRadialGradient(px, py, 0, px, py, radius);
+
+      gradient.addColorStop(0, hexToRgbString(color, alpha * alphaScale));
+      gradient.addColorStop(0.14, hexToRgbString(color, alpha * alphaScale));
+      gradient.addColorStop(0.34, hexToRgbString(color, alpha * 0.62 * alphaScale));
+      gradient.addColorStop(0.62, hexToRgbString(color, alpha * 0.22 * alphaScale));
+      gradient.addColorStop(1, hexToRgbString(color, 0));
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.ellipse(px, py, prx, pry, 0, 0, Math.PI * 2);
+      ctx.fill();
+    };
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.save();
+    ctx.globalCompositeOperation = "lighter";
+    ctx.filter = `blur(${blur}px) saturate(132%)`;
+
+    drawBlob({
+      x: 0.12,
+      y: 0.93,
+      rx: 0.34,
+      ry: 0.22,
+      color: this.options.colorStops[0],
+      phase: 0.2,
+      alpha: 1.18 * blendScale,
+    });
+    drawBlob({
+      x: 0.5,
+      y: 0.98,
+      rx: 0.32,
+      ry: 0.17,
+      color: this.options.colorStops[1],
+      phase: 1.6,
+      alpha: 1.0 * blendScale,
+    });
+    drawBlob({
+      x: 0.86,
+      y: 0.92,
+      rx: 0.38,
+      ry: 0.22,
+      color: this.options.colorStops[2],
+      phase: 2.4,
+      alpha: 1.14 * blendScale,
+    });
+
+    ctx.filter = `blur(${Math.max(12, height * 0.03)}px)`;
+
+    for (let index = 0; index < 5; index += 1) {
+      const ribbonY =
+        height * (0.64 + index * 0.07) +
+        Math.sin(t * (1.2 + index * 0.2) + index * 0.9) * height * 0.075;
+      const driftX = Math.sin(t * 1.05 + index) * width * 0.18;
+      const gradient = ctx.createLinearGradient(
+        -width * 0.1 + driftX,
+        ribbonY,
+        width * 1.1 + driftX,
+        ribbonY + height * 0.06
+      );
+      const color = this.options.colorStops[index % this.options.colorStops.length];
+      gradient.addColorStop(0, hexToRgbString(color, 0));
+      gradient.addColorStop(0.14, hexToRgbString(color, 0.22 * blendScale));
+      gradient.addColorStop(0.48, hexToRgbString(color, 0.52 * blendScale));
+      gradient.addColorStop(0.82, hexToRgbString(color, 0.2 * blendScale));
+      gradient.addColorStop(1, hexToRgbString(color, 0));
+      ctx.fillStyle = gradient;
+      ctx.fillRect(-width * 0.16, ribbonY - height * 0.055, width * 1.32, height * 0.16);
+    }
+
+    ctx.filter = `blur(${Math.max(6, height * 0.018)}px)`;
+
+    for (let index = 0; index < 4; index += 1) {
+      const scanY =
+        height * (0.68 + index * 0.06) +
+        Math.cos(t * (1.8 + index * 0.24) + index * 1.2) * height * 0.04;
+      const scanGradient = ctx.createLinearGradient(
+        0,
+        scanY,
+        width,
+        scanY + height * 0.02
+      );
+      const color = this.options.colorStops[(index + 1) % this.options.colorStops.length];
+      scanGradient.addColorStop(0, hexToRgbString(color, 0));
+      scanGradient.addColorStop(0.25, hexToRgbString(color, 0.12 * blendScale));
+      scanGradient.addColorStop(0.55, hexToRgbString(color, 0.26 * blendScale));
+      scanGradient.addColorStop(0.82, hexToRgbString(color, 0.08 * blendScale));
+      scanGradient.addColorStop(1, hexToRgbString(color, 0));
+      ctx.fillStyle = scanGradient;
+      ctx.fillRect(0, scanY, width, height * 0.038);
+    }
+
+    ctx.restore();
+  }
 }
 
 class DotFieldBackground {
@@ -1063,7 +1400,7 @@ class DotFieldBackground {
       }
 
       if (this.sparkle) {
-        const hash = ((i * 2654435761) ^ (this.frameCount >> 3)) >>> 0;
+        const hash = ((i * 2654435761) ^ (this.frameCount >> 5)) >>> 0;
         if (hash % 100 < 3) {
           ctx.moveTo(drawX + baseRadius * 1.8, drawY);
           ctx.arc(drawX, drawY, baseRadius * 1.8, 0, Math.PI * 2);
@@ -1471,6 +1808,56 @@ class HomeRevealController {
   }
 }
 
+class SkillsPreviewController {
+  constructor(panel, image) {
+    this.panel = panel;
+    this.image = image;
+    this.items = [...document.querySelectorAll("[data-skill-item]")];
+    this.pointer = { x: 0, y: 0 };
+    this.raf = null;
+
+    if (!this.panel || !this.image || !this.items.length) return;
+
+    this.handleMove = this.handleMove.bind(this);
+    this.updatePosition = this.updatePosition.bind(this);
+
+    this.items.forEach((item, index) => {
+      item.addEventListener("mouseenter", () => this.setActive(item, index));
+      item.addEventListener("focusin", () => this.setActive(item, index));
+      item.addEventListener("mousemove", this.handleMove);
+    });
+
+    this.setActive(this.items[0], 0);
+  }
+
+  setActive(item, index) {
+    const nextImage = item.dataset.previewImage;
+    if (nextImage) {
+      this.image.src = nextImage;
+    }
+
+    this.items.forEach((node, nodeIndex) => {
+      node.classList.toggle("is-active", nodeIndex === index);
+    });
+  }
+
+  handleMove(event) {
+    const section = event.currentTarget.closest(".skills-section");
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    this.pointer.x = event.clientX - rect.left;
+    this.pointer.y = event.clientY - rect.top;
+    if (!this.raf) {
+      this.raf = window.requestAnimationFrame(this.updatePosition);
+    }
+  }
+
+  updatePosition() {
+    this.raf = null;
+    this.panel.style.transform = `translate(${this.pointer.x}px, ${this.pointer.y}px)`;
+  }
+}
+
 class WorkMarqueeController {
   constructor(section) {
     this.section = section;
@@ -1548,6 +1935,22 @@ langToggle?.addEventListener("click", () => {
   renderView();
 });
 
+homeScrollButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    const targetId = button.dataset.scrollHome;
+    if (!targetId) return;
+
+    if (getCurrentView() === "home") {
+      scrollToHomeTarget(targetId);
+      return;
+    }
+
+    pendingHomeScrollTarget = targetId;
+    window.location.hash = "#home";
+  });
+});
+
 window.addEventListener("hashchange", renderView);
 window.addEventListener("load", () => {
   applyLanguage();
@@ -1590,6 +1993,9 @@ window.addEventListener("load", () => {
   }
   if (connectRevealNodes.length) {
     new HomeRevealController(connectRevealNodes);
+  }
+  if (skillPreviewPanel && skillPreviewImage) {
+    new SkillsPreviewController(skillPreviewPanel, skillPreviewImage);
   }
   initializeDotFields();
 });

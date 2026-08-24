@@ -4,56 +4,89 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Library | CODESIGN.WY</title>
+    <meta
+      id="meta-description"
+      name="description"
+      content="CODESIGN.WY personal portfolio blending product thinking, AI workflows, and digital craft."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Chonburi&family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body data-page="ai-library">
     <div class="site-shell">
-      <header class="topbar">
-        <a class="brand" href="./index.html" aria-label="CODESIGN.WY home">
-          <span class="brand-en">CODESIGN.WY</span>
-          <span class="brand-cn">代码与设计</span>
-        </a>
-        <nav class="nav" aria-label="Primary">
-          <a href="./index.html">Home</a>
-          <a href="./experience.html">Experience</a>
-          <a href="./projects.html">Projects</a>
-          <a href="./ai-library.html">AI Library</a>
-        </nav>
-        <div class="status-pill">
-          <span class="status-dot"></span>
-          <span>AI.ARCHIVE</span>
-        </div>
-      </header>
-
-      <main class="subpage">
-        <section class="page-hero">
-          <span class="section-kicker">03 / AI Library</span>
-          <h1>Curated tools, references, and workflow notes for practical AI use.</h1>
-          <p>
-            A growing collection of prompts, resources, process maps, and tool
-            observations for creative and productive AI-native work.
-          </p>
-        </section>
-
-        <section class="detail-section">
-          <div class="library-panel">
-            <p>
-              This page is designed as a modular archive for prompt patterns,
-              model comparisons, workflow recipes, and selected inspiration.
-            </p>
-            <div class="library-chips">
-              <span>Prompt Patterns</span>
-              <span>Model Notes</span>
-              <span>Automation Recipes</span>
-              <span>Reference Links</span>
+      <main class="app-main">
+        <section class="view subpage is-active" id="view-ai-library" data-view="ai-library">
+          <div class="dotfield-bg" aria-hidden="true">
+            <div
+              class="dotfield-container"
+              data-dotfield
+              data-gradient-from="#1c326e"
+              data-gradient-to="#394c7b"
+              data-glow-color="#0a0d15"
+            >
+              <canvas class="dotfield-canvas"></canvas>
+              <svg class="dotfield-glow" aria-hidden="true">
+                <defs>
+                  <radialGradient>
+                    <stop offset="0%"></stop>
+                    <stop offset="100%" stop-color="transparent"></stop>
+                  </radialGradient>
+                </defs>
+                <circle cx="-9999" cy="-9999" r="100"></circle>
+              </svg>
             </div>
           </div>
+          <section class="projects-showcase-hero">
+            <div class="projects-showcase-copy">
+              <span class="section-kicker" data-i18n="ai_kicker">02 / AI Library</span>
+              <h1 data-i18n="ai_title">AI Library</h1>
+              <p data-i18n="ai_copy">
+                A growing collection of prompts, resources, process maps, and tool
+                observations for creative and productive AI-native work.
+              </p>
+            </div>
+          </section>
+
+          <section class="projects-showcase-grid">
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-one">
+                <div class="showcase-overlay showcase-overlay-terminal"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="ai_patterns_tag">PROMPT PATTERNS</span>
+                <h3 data-i18n="ai_patterns_copy">Reusable prompt structures for ideation, drafting, and decision support.</h3>
+                <p data-i18n="ai_patterns_meta">Prompt scaffolds, framing templates, and repeatable creative instructions.</p>
+              </div>
+            </article>
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-four">
+                <div class="showcase-metric">
+                  <strong>24</strong>
+                  <span data-i18n="ai_metric_label">Workflow notes</span>
+                </div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="ai_models_tag">MODEL NOTES</span>
+                <h3 data-i18n="ai_models_copy">Comparisons and observations about where different models perform best.</h3>
+                <p data-i18n="ai_models_meta">Strengths, limits, and practical notes for selecting the right model quickly.</p>
+              </div>
+            </article>
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-three">
+                <div class="showcase-overlay showcase-overlay-aurora"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="ai_recipes_tag">AUTOMATION RECIPES</span>
+                <h3 data-i18n="ai_recipes_copy">Step-based AI workflows that turn repeated tasks into reliable systems.</h3>
+                <p data-i18n="ai_recipes_meta">Research flows, content pipelines, and operational shortcuts for everyday work.</p>
+              </div>
+            </article>
+          </section>
         </section>
       </main>
     </div>

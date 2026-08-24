@@ -4,58 +4,272 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects | CODESIGN.WY</title>
+    <meta
+      id="meta-description"
+      name="description"
+      content="CODESIGN.WY personal portfolio blending product thinking, AI workflows, and digital craft."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Chonburi&family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body data-page="projects">
     <div class="site-shell">
-      <header class="topbar">
-        <a class="brand" href="./index.html" aria-label="CODESIGN.WY home">
-          <span class="brand-en">CODESIGN.WY</span>
-          <span class="brand-cn">代码与设计</span>
-        </a>
-        <nav class="nav" aria-label="Primary">
-          <a href="./index.html">Home</a>
-          <a href="./experience.html">Experience</a>
-          <a href="./projects.html">Projects</a>
-          <a href="./ai-library.html">AI Library</a>
-        </nav>
-        <div class="status-pill">
-          <span class="status-dot"></span>
-          <span>PRJ.ACTIVE</span>
-        </div>
-      </header>
-
-      <main class="subpage">
-        <section class="page-hero">
-          <span class="section-kicker">02 / Projects</span>
-          <h1>Selected builds shaped by narrative, systems, and interface craft.</h1>
-          <p>
-            Portfolio experiences, AI-supported tools, and design-led builds
-            that emphasize clarity, tone, and usable structure.
-          </p>
-        </section>
-
-        <section class="detail-section">
-          <div class="project-list">
-            <article class="project-card">
-              <span class="project-tag">PORTFOLIO</span>
-              <h3>Brand-led websites with stronger visual storytelling.</h3>
-            </article>
-            <article class="project-card">
-              <span class="project-tag">EXPERIMENT</span>
-              <h3>Creative coding and motion systems for expressive interfaces.</h3>
-            </article>
-            <article class="project-card">
-              <span class="project-tag">AI WORKFLOW</span>
-              <h3>Reusable prompt and tool pipelines for faster making.</h3>
-            </article>
+      <main class="app-main">
+        <section class="view subpage is-active" id="view-projects" data-view="projects">
+          <div class="dotfield-bg" aria-hidden="true">
+            <div
+              class="dotfield-container"
+              data-dotfield
+              data-gradient-from="#1c326e"
+              data-gradient-to="#394c7b"
+              data-glow-color="#0a0d15"
+            >
+              <canvas class="dotfield-canvas"></canvas>
+              <svg class="dotfield-glow" aria-hidden="true">
+                <defs>
+                  <radialGradient>
+                    <stop offset="0%"></stop>
+                    <stop offset="100%" stop-color="transparent"></stop>
+                  </radialGradient>
+                </defs>
+                <circle cx="-9999" cy="-9999" r="100"></circle>
+              </svg>
+            </div>
           </div>
+          <section class="projects-showcase-hero">
+            <div class="projects-showcase-copy">
+              <h1 data-i18n="projects_title">Featured Projects</h1>
+              <p data-i18n="projects_copy">
+                A curated selection of projects, including mobile design & development
+                and immersive spatial experiences.
+              </p>
+            </div>
+          </section>
+
+          <section class="projects-section">
+            <div class="projects-section-heading">
+              <h2 class="projects-section-title">
+                <span class="projects-section-icon" aria-hidden="true">✦</span>
+                <span data-i18n="projects_mobile_title">Mobile Design & Development</span>
+              </h2>
+            </div>
+            <div class="projects-mobile-grid">
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV1v8826PEYh/?spm_id_from=333.1387.homepage.video_card.click&vd_source=19ba691482010daf2d85db27e0505117"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Bee Hero video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-bright"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/beehero.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_mobile_card_1_tag_1">AI Native App</span>
+                    <span class="project-tag" data-i18n="projects_mobile_card_1_tag_2">National 1st Prize</span>
+                  </div>
+                  <h3 data-i18n="projects_mobile_card_1_title">Bee Hero</h3>
+                  <p data-i18n="projects_mobile_card_1_meta">聚焦儿童自然知识科普，构建AI探索+AR种植的趣味体验。</p>
+                </div>
+              </a>
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV1po4y1W7pQ/?spm_id_from=333.1387.homepage.video_card.click&vd_source=19ba691482010daf2d85db27e0505117"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open CollabEar video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-clean"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/collabear.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_mobile_card_2_tag_1">AR Learning</span>
+                    <span class="project-tag" data-i18n="projects_mobile_card_2_tag_2">iF Design Talent Award</span>
+                  </div>
+                  <h3 data-i18n="projects_mobile_card_2_title">CollabEar</h3>
+                  <p data-i18n="projects_mobile_card_2_meta">通过AR情境体验，助力听障儿童在日常家庭环境中学习口语。</p>
+                </div>
+              </a>
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV19j8S6zESv/?spm_id_from=333.1387.homepage.video_card.click"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open BIO-NEIGHBOR video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-deep"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/BioNeighbor.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_mobile_card_3_tag_1">Urban Wildlife</span>
+                    <span class="project-tag" data-i18n="projects_mobile_card_3_tag_2">Citizen Science</span>
+                  </div>
+                  <h3 data-i18n="projects_mobile_card_3_title">BIO-NEIGHBOR</h3>
+                  <p data-i18n="projects_mobile_card_3_meta">帮助公民随时标记、收集城市野生动物信息，记录每一次美好相遇。</p>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <section class="projects-section projects-section-space">
+            <div class="projects-section-heading">
+              <h2 class="projects-section-title">
+                <span class="projects-section-icon" aria-hidden="true">✦</span>
+                <span data-i18n="projects_space_title">Immersive Spatial Experience</span>
+              </h2>
+            </div>
+            <div class="projects-space-grid">
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV1XJ8S6qEP2/?vd_source=19ba691482010daf2d85db27e0505117"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open MyAIPal video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-purple"
+                  style="--project-image: url('file:///var/folders/92/gvlbwr294fsfk6fs_kkbq4vw0000gn/T/codex-clipboard-058acf4e-6b11-43b9-b1a0-f75a3c7d7cd0.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_1_tag_1">AI Agent</span>
+                    <span class="project-tag" data-i18n="projects_space_card_1_tag_2">CHI 2025</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_1_title">MyAIPal</h3>
+                  <p data-i18n="projects_space_card_1_meta">Transforms everyday objects into personalized AI conversational agents within mixed reality environments.</p>
+                </div>
+              </a>
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV1u14y1U7YG/?spm_id_from=333.1387.homepage.video_card.click&vd_source=19ba691482010daf2d85db27e0505117"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open DreamSongs video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-gold"
+                  style="--project-image: url('file:///Users/yuwang/Downloads/dreamsongs.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_2_tag_1">Embodied Immersion</span>
+                    <span class="project-tag" data-i18n="projects_space_card_2_tag_2">SIGGRAPH Asia 2023</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_2_title">DreamSongs</h3>
+                  <p data-i18n="projects_space_card_2_meta">An embodied virtual narrative experience built around ancient Miao songs.</p>
+                </div>
+              </a>
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV1Ub8S6hEEc/?vd_source=19ba691482010daf2d85db27e0505117"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Mythoscape video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-emerald"
+                  style="--project-image: url('file:///Users/yuwang/Documents/Codex/网站设计/assets/mythoscape-carousel.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_3_tag_1">MR Interaction</span>
+                    <span class="project-tag" data-i18n="projects_space_card_3_tag_2">IEEE VR XR Gallery</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_3_title">Mythoscape</h3>
+                  <p data-i18n="projects_space_card_3_meta">An MR Shan Hai Jing game built around interaction with real objects.</p>
+                </div>
+              </a>
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV1Gs4y1C79v/?spm_id_from=333.1387.homepage.video_card.click&vd_source=19ba691482010daf2d85db27e0505117"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open 751 Candy Factory video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-candy"
+                  style="--project-image: url('file:///var/folders/92/gvlbwr294fsfk6fs_kkbq4vw0000gn/T/codex-clipboard-21af6c15-e030-488f-838a-4f0e1fa9584c.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_4_tag_1">AR On-site</span>
+                    <span class="project-tag" data-i18n="projects_space_card_4_tag_2">Huawei Hetu</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_4_title">751 CANDY FACTORY</h3>
+                  <p data-i18n="projects_space_card_4_meta">Built a mixed virtual-physical candy world on site within the 751 Power Square district.</p>
+                </div>
+              </a>
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV1og8S6CE9d/?spm_id_from=333.1387.homepage.video_card.click&vd_source=19ba691482010daf2d85db27e0505117"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open 邂逅之境 video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-rose"
+                  style="--project-image: url('file:///var/folders/92/gvlbwr294fsfk6fs_kkbq4vw0000gn/T/codex-clipboard-e15a8ab6-861e-4022-8003-fd543f4ba57d.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_5_tag_1">Future Retail</span>
+                    <span class="project-tag" data-i18n="projects_space_card_5_tag_2">BUAA × Alibaba Industry Course</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_5_title">邂逅之境</h3>
+                  <p data-i18n="projects_space_card_5_meta">Explores future XR commerce experiences through the Chanel Chance series.</p>
+                </div>
+              </a>
+              <a
+                class="showcase-card project-work-card project-work-link"
+                href="https://www.bilibili.com/video/BV1ez4y1H7FE/?spm_id_from=333.1387.homepage.video_card.click&vd_source=784921d6270302c207aa0530e56162e7"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open HOLOCHAT video"
+              >
+                <div
+                  class="showcase-visual showcase-visual-photo showcase-visual-photo-green"
+                  style="--project-image: url('file:///var/folders/92/gvlbwr294fsfk6fs_kkbq4vw0000gn/T/codex-clipboard-ae61b7d4-a8fb-4f89-bbb9-870d30a2aa5c.png'); --project-position: center center;"
+                >
+                  <div class="showcase-overlay showcase-overlay-photo"></div>
+                </div>
+                <div class="showcase-card-body">
+                  <div class="project-tag-group">
+                    <span class="project-tag" data-i18n="projects_space_card_6_tag_1">Future Social</span>
+                    <span class="project-tag" data-i18n="projects_space_card_6_tag_2">Prototype Practice</span>
+                  </div>
+                  <h3 data-i18n="projects_space_card_6_title">HOLOCHAT</h3>
+                  <p data-i18n="projects_space_card_6_meta">A future social exploration in mixed reality environments.</p>
+                </div>
+              </a>
+            </div>
+          </section>
         </section>
       </main>
     </div>

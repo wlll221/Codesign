@@ -1,0 +1,89 @@
+<svg width="1728" height="760" viewBox="0 0 1728 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1728" height="760" fill="url(#bg)"/>
+  <g filter="url(#blurA)" opacity="0.92">
+    <ellipse cx="238" cy="448" rx="396" ry="220" fill="url(#leftGlow)"/>
+  </g>
+  <g filter="url(#blurB)" opacity="0.95">
+    <ellipse cx="924" cy="414" rx="492" ry="258" fill="url(#centerGlow)"/>
+  </g>
+  <g filter="url(#blurC)" opacity="0.94">
+    <ellipse cx="1490" cy="372" rx="378" ry="250" fill="url(#rightGlow)"/>
+  </g>
+  <g filter="url(#bandBlur)" opacity="0.9">
+    <path d="M-56 396C152 334 302 330 470 356C658 384 808 462 976 470C1170 480 1324 386 1496 340C1598 312 1688 314 1788 334V760H-56V396Z" fill="url(#band)"/>
+  </g>
+  <g filter="url(#mistBlur)" opacity="0.66">
+    <ellipse cx="876" cy="514" rx="746" ry="168" fill="url(#mist)"/>
+  </g>
+  <rect y="626" width="1728" height="134" fill="url(#bottomFade)"/>
+  <defs>
+    <linearGradient id="bg" x1="864" y1="0" x2="864" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16304F"/>
+      <stop offset="0.2" stop-color="#1B4878"/>
+      <stop offset="0.44" stop-color="#2A6EAF"/>
+      <stop offset="0.68" stop-color="#73C2FB"/>
+      <stop offset="0.9" stop-color="#D9EEFF"/>
+      <stop offset="1" stop-color="#F7F7F5"/>
+    </linearGradient>
+    <radialGradient id="leftGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(238 448) rotate(14.6538) scale(404.296 232.166)">
+      <stop stop-color="#B5ECFF"/>
+      <stop offset="0.28" stop-color="#78D2FF"/>
+      <stop offset="0.58" stop-color="#3CAEFF"/>
+      <stop offset="1" stop-color="#3CAEFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="centerGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(924 414) rotate(-4.71239) scale(258 492)">
+      <stop stop-color="#79C8FF"/>
+      <stop offset="0.34" stop-color="#4FA9FF"/>
+      <stop offset="0.7" stop-color="#2E63FF" stop-opacity="0.74"/>
+      <stop offset="1" stop-color="#2E63FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rightGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1490 372) rotate(18.7141) scale(390.338 263.975)">
+      <stop stop-color="#94D6FF"/>
+      <stop offset="0.3" stop-color="#5FAFFF"/>
+      <stop offset="0.66" stop-color="#295EF4"/>
+      <stop offset="1" stop-color="#295EF4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="band" x1="866" y1="320" x2="866" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7CCEFF" stop-opacity="0"/>
+      <stop offset="0.18" stop-color="#7CCEFF" stop-opacity="0.44"/>
+      <stop offset="0.5" stop-color="#4AAEFF" stop-opacity="0.76"/>
+      <stop offset="0.78" stop-color="#C9EAFF" stop-opacity="0.62"/>
+      <stop offset="1" stop-color="#F4FAFF" stop-opacity="0.18"/>
+    </linearGradient>
+    <radialGradient id="mist" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(876 514) scale(746 168)">
+      <stop stop-color="#EFF8FF" stop-opacity="0.9"/>
+      <stop offset="0.42" stop-color="#D3ECFF" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#D3ECFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bottomFade" x1="864" y1="626" x2="864" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F7FF" stop-opacity="0"/>
+      <stop offset="0.52" stop-color="#F3F8FD" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="#F7F7F5"/>
+    </linearGradient>
+    <filter id="blurA" x="-338" y="102" width="1152" height="692" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="90" result="effect1_foregroundBlur_1_1"/>
+    </filter>
+    <filter id="blurB" x="212" y="-24" width="1424" height="876" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="110" result="effect1_foregroundBlur_1_1"/>
+    </filter>
+    <filter id="blurC" x="832" y="2" width="1316" height="740" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="140" result="effect1_foregroundBlur_1_1"/>
+    </filter>
+    <filter id="bandBlur" x="-236" y="140" width="2204" height="800" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="90" result="effect1_foregroundBlur_1_1"/>
+    </filter>
+    <filter id="mistBlur" x="-50" y="166" width="1852" height="696" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="90" result="effect1_foregroundBlur_1_1"/>
+    </filter>
+  </defs>
+</svg>

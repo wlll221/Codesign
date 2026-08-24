@@ -1,0 +1,13 @@
+{
+  "name": "yusra-portfolio-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Static portfolio site with React Bits Aurora background integration.",
+  "scripts": {
+    "start": "python3 -m http.server 4173"
+  },
+  "dependencies": {
+    "ogl": "^1.0.11"
+  }
+}

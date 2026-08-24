@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | CODESIGN.WY</title>
+    <meta
+      id="meta-description"
+      name="description"
+      content="CODESIGN.WY personal portfolio blending product thinking, AI workflows, and digital craft."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chonburi&family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="experience">
+    <div class="site-shell">
+      <main class="app-main">
+        <section class="view subpage is-active" id="view-experience" data-view="experience">
+          <div class="dotfield-bg" aria-hidden="true">
+            <div
+              class="dotfield-container"
+              data-dotfield
+              data-gradient-from="#1c326e"
+              data-gradient-to="#394c7b"
+              data-glow-color="#0a0d15"
+            >
+              <canvas class="dotfield-canvas"></canvas>
+              <svg class="dotfield-glow" aria-hidden="true">
+                <defs>
+                  <radialGradient>
+                    <stop offset="0%"></stop>
+                    <stop offset="100%" stop-color="transparent"></stop>
+                  </radialGradient>
+                </defs>
+                <circle cx="-9999" cy="-9999" r="100"></circle>
+              </svg>
+            </div>
+          </div>
+          <section class="projects-showcase-hero">
+            <div class="projects-showcase-copy">
+              <span class="section-kicker" data-i18n="experience_kicker">03 / Experience</span>
+              <h1 data-i18n="experience_title">Personal Experience</h1>
+              <p data-i18n="experience_copy">
+                I work across content structure, visual design, and frontend
+                execution to turn vague ideas into clear, usable experiences.
+              </p>
+            </div>
+            <div class="experience-hero-art" aria-label="Interactive experience badge preview">
+              <div id="experience-lanyard-mount" class="experience-lanyard-mount">
+                <div class="experience-lanyard-fallback">
+                  <span>Interactive Badge</span>
+                  <strong>CODESIGN.WY</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="projects-showcase-grid">
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-five">
+                <div class="showcase-overlay showcase-overlay-grid"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="experience_research_tag">RESEARCH</span>
+                <h3 data-i18n="experience_research_copy">Clarifying audience, goals, and information hierarchy before visual decisions begin.</h3>
+                <p data-i18n="experience_research_meta">Discovery work, framing, and decision-making structure before execution starts.</p>
+              </div>
+            </article>
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-two">
+                <div class="showcase-overlay showcase-overlay-dashboard"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="experience_systems_tag">SYSTEMS</span>
+                <h3 data-i18n="experience_systems_copy">Building scalable page logic, content groupings, and repeatable interaction patterns.</h3>
+                <p data-i18n="experience_systems_meta">Modular architecture, reusable sections, and maintainable content systems.</p>
+              </div>
+            </article>
+            <article class="showcase-card">
+              <div class="showcase-visual showcase-visual-six">
+                <div class="showcase-overlay showcase-overlay-signal"></div>
+              </div>
+              <div class="showcase-card-body">
+                <span class="project-tag" data-i18n="experience_execution_tag">EXECUTION</span>
+                <h3 data-i18n="experience_execution_copy">Translating concepts into refined interfaces with responsive, maintainable frontend structure.</h3>
+                <p data-i18n="experience_execution_meta">Frontend delivery, responsive refinement, and design-to-build continuity.</p>
+              </div>
+            </article>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./experience-lanyard.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
