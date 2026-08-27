@@ -536,16 +536,16 @@ const getCurrentView = () => {
 const getViewTitle = (view, language) => {
   const titles = {
     en: {
-      home: "CODESIGN.WY",
-      experience: "About | CODESIGN.WY",
-      projects: "Projects | CODESIGN.WY",
-      "ai-library": "AI Library | CODESIGN.WY",
+      home: "CODESIGN.YOONA",
+      experience: "About | CODESIGN.YOONA",
+      projects: "Projects | CODESIGN.YOONA",
+      "ai-library": "AI Library | CODESIGN.YOONA",
     },
     zh: {
-      home: "CODESIGN.WY",
-      experience: "关于 | CODESIGN.WY",
-      projects: "项目 | CODESIGN.WY",
-      "ai-library": "AI 资料库 | CODESIGN.WY",
+      home: "CODESIGN.YOONA",
+      experience: "关于 | CODESIGN.YOONA",
+      projects: "项目 | CODESIGN.YOONA",
+      "ai-library": "AI 资料库 | CODESIGN.YOONA",
     },
   };
 
@@ -566,8 +566,8 @@ const applyLanguage = () => {
   metaDescription?.setAttribute(
     "content",
     currentLanguage === "zh"
-      ? "CODESIGN.WY 个人网站，聚焦人工智能、数据、设计与数字创作。"
-      : "CODESIGN.WY personal portfolio blending product thinking, AI workflows, and digital craft."
+      ? "CODESIGN.YOONA 个人网站，聚焦人工智能、数据、设计与数字创作。"
+      : "CODESIGN.YOONA personal portfolio blending product thinking, AI workflows, and digital craft."
   );
 
   if (langToggle) {
