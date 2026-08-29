@@ -438,7 +438,7 @@ body[data-page="figma-home"] {
   inset: 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
-    url("./assets/home-grid.png") center top / clamp(720px, 60%, 1152px) 100% no-repeat;
+    url("./assets/home-grid.svg") center top / clamp(720px, 60%, 1152px) 100% no-repeat;
   opacity: 0.92;
   pointer-events: none;
   z-index: 1;
@@ -7545,6 +7545,10 @@ body[data-view="home"] .site-shell {
 
 body[data-page="projects"] .subpage[data-view="projects"] {
   background: #000000;
+}
+
+body[data-page="projects"] .site-shell {
+  padding-bottom: 0;
 }
 
 body[data-page="projects"] .subpage[data-view="projects"] .dotfield-container {
